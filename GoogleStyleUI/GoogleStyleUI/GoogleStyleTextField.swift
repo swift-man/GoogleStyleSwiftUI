@@ -49,24 +49,11 @@ public struct GoogleStyleTextField: View {
                                offsetY: $offsetY,
                                color: $color)
         TextField("", text: $text)
-          .focused(isFocused)
-          .onChange(of: isFocused.wrappedValue) { newValue in
-            withAnimation(.easeInOut(duration: 0.15)) {
-              if newValue {
-                offsetY = .top
-              } else {
-                offsetY = text.isEmpty ? .center : .top
-              }
-              
-              configureColor(errorMessage: errorMessage, isFocused: newValue)
-            }
-          }
-          .onChange(of: errorMessage) { newValue in
-            withAnimation(.easeInOut(duration: 0.15)) {
-              configureColor(errorMessage: newValue, isFocused: isFocused.wrappedValue)
-            }
-          }
-          .padding()
+          .modifier(GoogleStyleTextFieldModifier(isFocused: isFocused,
+                                                 text: $text,
+                                                 errorMessage: $errorMessage,
+                                                 color: $color,
+                                                 offsetY: $offsetY))
       }
       .frame(height: 40)
       

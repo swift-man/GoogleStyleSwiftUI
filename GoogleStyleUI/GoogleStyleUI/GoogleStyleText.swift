@@ -25,11 +25,7 @@ struct GoogleStyleText: View {
                             trailing: 0))
       Spacer()
     }
-    .frame(height: 18)
-    .padding(EdgeInsets(top: 4,
-                        leading: 0,
-                        bottom: 18,
-                        trailing: 0))
+    .modifier(GoogleStyleBottomTextModifier())
   }
 }
 
