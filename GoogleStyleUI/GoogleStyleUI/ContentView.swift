@@ -15,6 +15,7 @@ struct ContentView: View {
           LogInView()
         }
         NavigationLink("Picker") {
+          // https://myaccount.google.com/birthday?hl=ko
           LogInView()
         }
       }
