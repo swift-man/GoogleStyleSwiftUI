@@ -9,7 +9,7 @@
 * [ ] Refactor - padding(), SecureField
 * [ ] Picker
 * [ ] DatePicker
-* [ ] DatePicker - Korean Lunar
+* [ ] DatePicker - Lunar Segment
 * [ ] Configure Style Appearance - Color, Font
 * [ ] SPM
 
