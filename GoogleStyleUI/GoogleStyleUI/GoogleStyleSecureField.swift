@@ -49,24 +49,11 @@ public struct GoogleStyleSecureField: View {
                                offsetY: $offsetY,
                                color: $color)
         SecureField("", text: $text)
-          .focused(isFocused)
-          .onChange(of: isFocused.wrappedValue) { newValue in
-            withAnimation(.easeInOut(duration: 0.15)) {
-              if newValue {
-                offsetY = .top
-              } else {
-                offsetY = text.isEmpty ? .center : .top
-              }
-              
-              configureColor(errorMessage: errorMessage, isFocused: newValue)
-            }
-          }
-          .onChange(of: errorMessage) { newValue in
-            withAnimation(.easeInOut(duration: 0.15)) {
-              configureColor(errorMessage: newValue, isFocused: isFocused.wrappedValue)
-            }
-          }
-          .padding()
+          .modifier(GoogleStyleTextFieldModifier(isFocused: isFocused,
+                                                 text: $text,
+                                                 errorMessage: $errorMessage,
+                                                 color: $color,
+                                                 offsetY: $offsetY))
       }
       .frame(height: 40)
       
@@ -77,14 +64,6 @@ public struct GoogleStyleSecureField: View {
           GoogleStyleText(description: description)
         }
       }
-    }
-  }
-  
-  private func configureColor(errorMessage: String, isFocused: Bool) {
-    if !errorMessage.isEmpty {
-      color = ColorStyle.error.color
-    } else {
-      color = isFocused ? ColorStyle.active.color : ColorStyle.normal.color
     }
   }
 }
