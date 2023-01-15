@@ -5,11 +5,12 @@
 ## Feature
 * [x] TextField
 * [x] SecureField
+* [ ] TextField - limiteCount, prompt
 * [ ] Refactor - padding(), SecureField
 * [ ] Picker
 * [ ] DatePicker
 * [ ] DatePicker - Korean Lunar
-* [ ] Configure Style - Color, Font
+* [ ] Configure Style Appearance - Color, Font
 * [ ] SPM
 
 ## Code
