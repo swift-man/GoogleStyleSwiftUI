@@ -5,9 +5,11 @@
 ## Feature
 * [x] TextField
 * [x] SecureField
+* [ ] Refactor - padding(), SecureField
 * [ ] Picker
 * [ ] DatePicker
 * [ ] DatePicker - Korean Lunar
+* [ ] Configure Style - Color, Font
 * [ ] SPM
 
 ## Code
