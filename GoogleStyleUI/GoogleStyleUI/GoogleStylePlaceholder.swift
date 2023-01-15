@@ -38,7 +38,7 @@ struct GoogleStylePlaceholder: View {
           .frame(alignment: .leading)
           .background(.white)
           .font(offsetY == .top ? Font.body : Font.title3)
-          .foregroundColor(offsetY == .top ? color : GoogleStyleTextField.ColorStyle.normal.color)
+          .foregroundColor(offsetY == .top ? color : ColorStyle.normal.color)
           .offset(x: offsetY == .top ? 6 : 10, y: offsetY == .top ? -31 : 0)
 
         Spacer()

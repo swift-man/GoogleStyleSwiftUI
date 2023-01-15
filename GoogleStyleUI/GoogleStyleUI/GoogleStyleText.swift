@@ -17,7 +17,7 @@ struct GoogleStyleText: View {
   var body: some View {
     HStack {
       Text(description)
-        .foregroundColor(GoogleStyleTextField.ColorStyle.normal.color)
+        .foregroundColor(ColorStyle.normal.color)
         .font(.system(size: 14, weight: .regular))
         .padding(EdgeInsets(top: 0,
                             leading: 10,

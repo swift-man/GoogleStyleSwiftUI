@@ -17,10 +17,10 @@ struct GoogleStyleErrorMessage: View {
   
   private var errorForegroundColor: Color {
     if errorMessage.isEmpty {
-      return GoogleStyleTextField.ColorStyle.nonError.color
+      return ColorStyle.nonError.color
     }
     
-    return GoogleStyleTextField.ColorStyle.error.color
+    return ColorStyle.error.color
   }
   
   var body: some View {
