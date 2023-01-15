@@ -1,3 +1,3 @@
 # GoogleStyleSwiftUI
 
-![Image](https://drive.google.com/uc?export=view&id=11tjCTkopfyWjKK_okkYggxek58TPm5l3)  
+![Image](https://drive.google.com/uc?export=view&id=1hMiMVD3qbRP6fWTKKsp4H7ASxYneAo1M)  
