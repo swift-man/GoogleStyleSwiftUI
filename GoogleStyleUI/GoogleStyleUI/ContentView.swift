@@ -33,12 +33,11 @@ struct ContentView: View {
                          errorMessage: $errorMessage1,
                          description: "문자, 숫자, 마침표를 사용할 수 있습니다.")
 //    .padding()
-    GoogleStyleTextField(text: $text2,
-                         placeholder: "비밀번호",
-                         isFocused: $isFocused2,
-                         errorMessage: $errorMessage2,
-                         description: "",
-                         isSecure: true)
+    GoogleStyleSecureField(text: $text2,
+                           placeholder: "비밀번호",
+                           isFocused: $isFocused2,
+                           errorMessage: $errorMessage2,
+                           description: "")
 //    .padding()
     .onChange(of: text1) { newValue in
       print("text1 : \(newValue)")

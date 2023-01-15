@@ -1,5 +1,5 @@
 //
-//  GoogleStyleTextField.swift
+//  GoogleStyleSecureField.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/15.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct GoogleStyleTextField: View {
+public struct GoogleStyleSecureField: View {
   
   private var isFocused: FocusState<Bool>.Binding
   
@@ -48,7 +48,7 @@ public struct GoogleStyleTextField: View {
         GoogleStylePlaceholder(placeholder: placeholder,
                                offsetY: $offsetY,
                                color: $color)
-        TextField("", text: $text)
+        SecureField("", text: $text)
           .focused(isFocused)
           .onChange(of: isFocused.wrappedValue) { newValue in
             withAnimation(.easeInOut(duration: 0.15)) {
