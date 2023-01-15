@@ -21,6 +21,7 @@
 		E59AA80529742DC5004C6CFF /* GoogleStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80429742DC5004C6CFF /* GoogleStyleText.swift */; };
 		E59AA80729743A7C004C6CFF /* GoogleStyleSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */; };
 		E59AA80929743A94004C6CFF /* ColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80829743A94004C6CFF /* ColorStyle.swift */; };
+		E59AA80B29746823004C6CFF /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80A29746823004C6CFF /* LogInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		E59AA80429742DC5004C6CFF /* GoogleStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleText.swift; sourceTree = "<group>"; };
 		E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleSecureField.swift; sourceTree = "<group>"; };
 		E59AA80829743A94004C6CFF /* ColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyle.swift; sourceTree = "<group>"; };
+		E59AA80A29746823004C6CFF /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				E59AA7D12972F7B5004C6CFF /* GoogleStyleUIApp.swift */,
 				E59AA7D32972F7B5004C6CFF /* ContentView.swift */,
+				E59AA80A29746823004C6CFF /* LogInView.swift */,
 				E59AA7FC29730116004C6CFF /* GoogleStyleTextField.swift */,
 				E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */,
 				E59AA80829743A94004C6CFF /* ColorStyle.swift */,
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59AA80B29746823004C6CFF /* LogInView.swift in Sources */,
 				E59AA80729743A7C004C6CFF /* GoogleStyleSecureField.swift in Sources */,
 				E59AA7D42972F7B5004C6CFF /* ContentView.swift in Sources */,
 				E59AA7FF297427F9004C6CFF /* GoogleStyleErrorMessage.swift in Sources */,
