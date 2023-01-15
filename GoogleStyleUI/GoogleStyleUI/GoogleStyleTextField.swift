@@ -66,12 +66,4 @@ public struct GoogleStyleTextField: View {
       }
     }
   }
-  
-  private func configureColor(errorMessage: String, isFocused: Bool) {
-    if !errorMessage.isEmpty {
-      color = ColorStyle.error.color
-    } else {
-      color = isFocused ? ColorStyle.active.color : ColorStyle.normal.color
-    }
-  }
 }
