@@ -14,18 +14,22 @@ struct GoogleStylePlaceholder: View {
   }
   private let placeholder: String
   
+  private let background: Color
+  
   @Binding
-  private var color: Color
+  private var foregroundColor: Color
   
   @Binding
   private var offsetY: OffsetY
   
   init(placeholder: String,
        offsetY: Binding<OffsetY>,
-       color: Binding<Color>) {
+       foregroundColor: Binding<Color>,
+       background: Color) {
     self._offsetY = offsetY
-    self._color = color
+    self._foregroundColor = foregroundColor
     self.placeholder = placeholder
+    self.background = background
   }
   
   var body: some View {
@@ -36,9 +40,9 @@ struct GoogleStylePlaceholder: View {
                               bottom: 0,
                               trailing: 5))
           .frame(alignment: .leading)
-          .background(.white)
+          .background(background)
           .font(offsetY == .top ? Font.body : Font.title3)
-          .foregroundColor(offsetY == .top ? color : ColorStyle.normal.color)
+          .foregroundColor(offsetY == .top ? foregroundColor : ColorStyle.normal.color)
           .offset(x: offsetY == .top ? 6 : 10, y: offsetY == .top ? -31 : 0)
 
         Spacer()
@@ -56,6 +60,7 @@ struct GoogleStylePlaceholder_Previews: PreviewProvider {
   static var previews: some View {
     GoogleStylePlaceholder(placeholder: "placeholder",
                            offsetY: $offsetY,
-                           color: $color)
+                           foregroundColor: $color,
+                           background: .white)
   }
 }
