@@ -24,6 +24,7 @@
 		E59AA80B29746823004C6CFF /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80A29746823004C6CFF /* LogInView.swift */; };
 		E59AA80D29747216004C6CFF /* GoogleStyleTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80C29747216004C6CFF /* GoogleStyleTextFieldModifier.swift */; };
 		E59AA80F297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80E297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift */; };
+		E5B6815929771393005A82DB /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B6815829771393005A82DB /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		E59AA80A29746823004C6CFF /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		E59AA80C29747216004C6CFF /* GoogleStyleTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleTextFieldModifier.swift; sourceTree = "<group>"; };
 		E59AA80E297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleBottomTextModifier.swift; sourceTree = "<group>"; };
+		E5B6815829771393005A82DB /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +117,7 @@
 		E59AA7D02972F7B5004C6CFF /* GoogleStyleUI */ = {
 			isa = PBXGroup;
 			children = (
-				E59AA7D12972F7B5004C6CFF /* GoogleStyleUIApp.swift */,
-				E59AA7D32972F7B5004C6CFF /* ContentView.swift */,
-				E59AA80A29746823004C6CFF /* LogInView.swift */,
+				E5B6815A297713DE005A82DB /* Example */,
 				E59AA7FC29730116004C6CFF /* GoogleStyleTextField.swift */,
 				E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */,
 				E59AA80C29747216004C6CFF /* GoogleStyleTextFieldModifier.swift */,
@@ -127,6 +127,7 @@
 				E59AA7FE297427F9004C6CFF /* GoogleStyleErrorMessage.swift */,
 				E59AA80429742DC5004C6CFF /* GoogleStyleText.swift */,
 				E59AA80E297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift */,
+				E5B6815829771393005A82DB /* Color+.swift */,
 				E59AA7D52972F7B6004C6CFF /* Assets.xcassets */,
 				E59AA7D72972F7B6004C6CFF /* GoogleStyleUI.entitlements */,
 				E59AA7D82972F7B6004C6CFF /* Preview Content */,
@@ -157,6 +158,16 @@
 				E59AA7EF2972F7B6004C6CFF /* GoogleStyleUIUITestsLaunchTests.swift */,
 			);
 			path = GoogleStyleUIUITests;
+			sourceTree = "<group>";
+		};
+		E5B6815A297713DE005A82DB /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				E59AA7D12972F7B5004C6CFF /* GoogleStyleUIApp.swift */,
+				E59AA7D32972F7B5004C6CFF /* ContentView.swift */,
+				E59AA80A29746823004C6CFF /* LogInView.swift */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +306,7 @@
 				E59AA7FF297427F9004C6CFF /* GoogleStyleErrorMessage.swift in Sources */,
 				E59AA7D22972F7B5004C6CFF /* GoogleStyleUIApp.swift in Sources */,
 				E59AA80F297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift in Sources */,
+				E5B6815929771393005A82DB /* Color+.swift in Sources */,
 				E59AA80929743A94004C6CFF /* ColorStyle.swift in Sources */,
 				E59AA8012974293A004C6CFF /* GoogleStyleRoundedBorder.swift in Sources */,
 				E59AA80529742DC5004C6CFF /* GoogleStyleText.swift in Sources */,
@@ -387,6 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -439,6 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -467,7 +481,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
@@ -503,7 +517,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.1;

@@ -25,12 +25,14 @@ public struct GoogleStyleSecureField: View {
   
   private let placeholder: String
   private let description: String
+  private let background: Color
   
   public init(text: Binding<String>,
               placeholder: String,
               isFocused: FocusState<Bool>.Binding,
               errorMessage: Binding<String>,
-              description: String = "") {
+              description: String = "",
+              background: Color = .background) {
     
     self._text = text
     self._errorMessage = errorMessage
@@ -39,6 +41,7 @@ public struct GoogleStyleSecureField: View {
     self.offsetY = text.wrappedValue.isEmpty ? .center : .top
     self.isFocused = isFocused
     self.description = description
+    self.background = background
   }
 
   public var body: some View {
@@ -47,7 +50,8 @@ public struct GoogleStyleSecureField: View {
         GoogleStyleRoundedBorder(color: $color)
         GoogleStylePlaceholder(placeholder: placeholder,
                                offsetY: $offsetY,
-                               color: $color)
+                               foregroundColor: $color,
+                               background: background)
         SecureField("", text: $text)
           .modifier(GoogleStyleTextFieldModifier(isFocused: isFocused,
                                                  text: $text,

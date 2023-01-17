@@ -32,6 +32,7 @@ struct LogInView: View {
                          isFocused: $isFocused1,
                          errorMessage: $errorMessage1,
                          description: "문자, 숫자, 마침표를 사용할 수 있습니다.")
+  
     .padding(EdgeInsets(top: 0,
                         leading: 10,
                         bottom: 0,
@@ -40,8 +41,7 @@ struct LogInView: View {
     GoogleStyleSecureField(text: $text2,
                            placeholder: "비밀번호",
                            isFocused: $isFocused2,
-                           errorMessage: $errorMessage2,
-                           description: "")
+                           errorMessage: $errorMessage2)
     .padding(EdgeInsets(top: 0,
                         leading: 10,
                         bottom: 0,
@@ -58,6 +58,7 @@ struct LogInView: View {
         }
       }
     }
+    .foregroundColor(.blue)
     Button("Show Error2") {
       withAnimation(.easeInOut(duration: 0.15)) {
         if !errorMessage2.isEmpty {
@@ -67,6 +68,8 @@ struct LogInView: View {
         }
       }
     }
+    .foregroundColor(.blue)
+    .navigationTitle("LoginView")
   }
 }
 
