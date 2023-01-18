@@ -28,7 +28,9 @@ struct LogInView: View {
   
   var body: some View {
     GoogleStyleTextField(text: $text1,
+                         limit: 10,
                          placeholder: "사용자 이름",
+                         editingPlaceholder: "10자리",
                          isFocused: $isFocused1,
                          errorMessage: $errorMessage1,
                          description: "문자, 숫자, 마침표를 사용할 수 있습니다.")

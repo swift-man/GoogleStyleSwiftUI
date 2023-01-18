@@ -36,7 +36,7 @@ struct GoogleStylePlaceholder: View {
       HStack {
         Text(placeholder)
           .padding(EdgeInsets(top: 0,
-                              leading: offsetY == .top ? 4 : 0,
+                              leading: offsetY == .top ? 5 : 0,
                               bottom: 0,
                               trailing: 5))
           .frame(alignment: .leading)
