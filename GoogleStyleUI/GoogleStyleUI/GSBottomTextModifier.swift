@@ -1,5 +1,5 @@
 //
-//  GoogleStyleBottomTextModifier.swift
+//  GSBottomTextModifier.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoogleStyleBottomTextModifier: ViewModifier {
+struct GSBottomTextModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
       .frame(height: 18)

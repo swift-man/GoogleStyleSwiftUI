@@ -1,5 +1,5 @@
 //
-//  ColorStyle.swift
+//  GSColorStyle.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/15.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum ColorStyle {
+enum GSColorStyle {
   case active
   case normal
   case error

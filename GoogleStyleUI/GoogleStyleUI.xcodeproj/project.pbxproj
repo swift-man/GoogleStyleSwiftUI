@@ -15,16 +15,16 @@
 		E59AA7E42972F7B6004C6CFF /* GoogleStyleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7E32972F7B6004C6CFF /* GoogleStyleUITests.swift */; };
 		E59AA7EE2972F7B6004C6CFF /* GoogleStyleUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7ED2972F7B6004C6CFF /* GoogleStyleUIUITests.swift */; };
 		E59AA7F02972F7B6004C6CFF /* GoogleStyleUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7EF2972F7B6004C6CFF /* GoogleStyleUIUITestsLaunchTests.swift */; };
-		E59AA7FD29730116004C6CFF /* GoogleStyleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7FC29730116004C6CFF /* GoogleStyleTextField.swift */; };
-		E59AA7FF297427F9004C6CFF /* GoogleStyleErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7FE297427F9004C6CFF /* GoogleStyleErrorMessage.swift */; };
-		E59AA8012974293A004C6CFF /* GoogleStyleRoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA8002974293A004C6CFF /* GoogleStyleRoundedBorder.swift */; };
-		E59AA80329742971004C6CFF /* GoogleStylePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80229742971004C6CFF /* GoogleStylePlaceholder.swift */; };
-		E59AA80529742DC5004C6CFF /* GoogleStyleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80429742DC5004C6CFF /* GoogleStyleText.swift */; };
-		E59AA80729743A7C004C6CFF /* GoogleStyleSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */; };
-		E59AA80929743A94004C6CFF /* ColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80829743A94004C6CFF /* ColorStyle.swift */; };
+		E59AA7FD29730116004C6CFF /* GSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7FC29730116004C6CFF /* GSTextField.swift */; };
+		E59AA7FF297427F9004C6CFF /* GSErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7FE297427F9004C6CFF /* GSErrorMessage.swift */; };
+		E59AA8012974293A004C6CFF /* GSRoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA8002974293A004C6CFF /* GSRoundedBorder.swift */; };
+		E59AA80329742971004C6CFF /* GSPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80229742971004C6CFF /* GSPlaceholder.swift */; };
+		E59AA80529742DC5004C6CFF /* GSText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80429742DC5004C6CFF /* GSText.swift */; };
+		E59AA80729743A7C004C6CFF /* GSSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80629743A7C004C6CFF /* GSSecureField.swift */; };
+		E59AA80929743A94004C6CFF /* GSColorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80829743A94004C6CFF /* GSColorStyle.swift */; };
 		E59AA80B29746823004C6CFF /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80A29746823004C6CFF /* LogInView.swift */; };
-		E59AA80D29747216004C6CFF /* GoogleStyleTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80C29747216004C6CFF /* GoogleStyleTextFieldModifier.swift */; };
-		E59AA80F297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80E297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift */; };
+		E59AA80D29747216004C6CFF /* GSTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80C29747216004C6CFF /* GSTextFieldModifier.swift */; };
+		E59AA80F297472D6004C6CFF /* GSBottomTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA80E297472D6004C6CFF /* GSBottomTextModifier.swift */; };
 		E5B6815929771393005A82DB /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B6815829771393005A82DB /* Color+.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,16 +57,16 @@
 		E59AA7E92972F7B6004C6CFF /* GoogleStyleUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleStyleUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59AA7ED2972F7B6004C6CFF /* GoogleStyleUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleUIUITests.swift; sourceTree = "<group>"; };
 		E59AA7EF2972F7B6004C6CFF /* GoogleStyleUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E59AA7FC29730116004C6CFF /* GoogleStyleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleTextField.swift; sourceTree = "<group>"; };
-		E59AA7FE297427F9004C6CFF /* GoogleStyleErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleErrorMessage.swift; sourceTree = "<group>"; };
-		E59AA8002974293A004C6CFF /* GoogleStyleRoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleRoundedBorder.swift; sourceTree = "<group>"; };
-		E59AA80229742971004C6CFF /* GoogleStylePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStylePlaceholder.swift; sourceTree = "<group>"; };
-		E59AA80429742DC5004C6CFF /* GoogleStyleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleText.swift; sourceTree = "<group>"; };
-		E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleSecureField.swift; sourceTree = "<group>"; };
-		E59AA80829743A94004C6CFF /* ColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorStyle.swift; sourceTree = "<group>"; };
+		E59AA7FC29730116004C6CFF /* GSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTextField.swift; sourceTree = "<group>"; };
+		E59AA7FE297427F9004C6CFF /* GSErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSErrorMessage.swift; sourceTree = "<group>"; };
+		E59AA8002974293A004C6CFF /* GSRoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSRoundedBorder.swift; sourceTree = "<group>"; };
+		E59AA80229742971004C6CFF /* GSPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPlaceholder.swift; sourceTree = "<group>"; };
+		E59AA80429742DC5004C6CFF /* GSText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSText.swift; sourceTree = "<group>"; };
+		E59AA80629743A7C004C6CFF /* GSSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSSecureField.swift; sourceTree = "<group>"; };
+		E59AA80829743A94004C6CFF /* GSColorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSColorStyle.swift; sourceTree = "<group>"; };
 		E59AA80A29746823004C6CFF /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
-		E59AA80C29747216004C6CFF /* GoogleStyleTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleTextFieldModifier.swift; sourceTree = "<group>"; };
-		E59AA80E297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleBottomTextModifier.swift; sourceTree = "<group>"; };
+		E59AA80C29747216004C6CFF /* GSTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTextFieldModifier.swift; sourceTree = "<group>"; };
+		E59AA80E297472D6004C6CFF /* GSBottomTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSBottomTextModifier.swift; sourceTree = "<group>"; };
 		E5B6815829771393005A82DB /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,15 +120,15 @@
 			isa = PBXGroup;
 			children = (
 				E5B6815A297713DE005A82DB /* Example */,
-				E59AA7FC29730116004C6CFF /* GoogleStyleTextField.swift */,
-				E59AA80629743A7C004C6CFF /* GoogleStyleSecureField.swift */,
-				E59AA80C29747216004C6CFF /* GoogleStyleTextFieldModifier.swift */,
-				E59AA80829743A94004C6CFF /* ColorStyle.swift */,
-				E59AA80229742971004C6CFF /* GoogleStylePlaceholder.swift */,
-				E59AA8002974293A004C6CFF /* GoogleStyleRoundedBorder.swift */,
-				E59AA7FE297427F9004C6CFF /* GoogleStyleErrorMessage.swift */,
-				E59AA80429742DC5004C6CFF /* GoogleStyleText.swift */,
-				E59AA80E297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift */,
+				E59AA7FC29730116004C6CFF /* GSTextField.swift */,
+				E59AA80629743A7C004C6CFF /* GSSecureField.swift */,
+				E59AA80C29747216004C6CFF /* GSTextFieldModifier.swift */,
+				E59AA80829743A94004C6CFF /* GSColorStyle.swift */,
+				E59AA80229742971004C6CFF /* GSPlaceholder.swift */,
+				E59AA8002974293A004C6CFF /* GSRoundedBorder.swift */,
+				E59AA7FE297427F9004C6CFF /* GSErrorMessage.swift */,
+				E59AA80429742DC5004C6CFF /* GSText.swift */,
+				E59AA80E297472D6004C6CFF /* GSBottomTextModifier.swift */,
 				E5B6815829771393005A82DB /* Color+.swift */,
 				E59AA7D52972F7B6004C6CFF /* Assets.xcassets */,
 				E59AA7D72972F7B6004C6CFF /* GoogleStyleUI.entitlements */,
@@ -309,18 +309,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E59AA80B29746823004C6CFF /* LogInView.swift in Sources */,
-				E59AA80729743A7C004C6CFF /* GoogleStyleSecureField.swift in Sources */,
+				E59AA80729743A7C004C6CFF /* GSSecureField.swift in Sources */,
 				E59AA7D42972F7B5004C6CFF /* ContentView.swift in Sources */,
-				E59AA7FF297427F9004C6CFF /* GoogleStyleErrorMessage.swift in Sources */,
+				E59AA7FF297427F9004C6CFF /* GSErrorMessage.swift in Sources */,
 				E59AA7D22972F7B5004C6CFF /* GoogleStyleUIApp.swift in Sources */,
-				E59AA80F297472D6004C6CFF /* GoogleStyleBottomTextModifier.swift in Sources */,
+				E59AA80F297472D6004C6CFF /* GSBottomTextModifier.swift in Sources */,
 				E5B6815929771393005A82DB /* Color+.swift in Sources */,
-				E59AA80929743A94004C6CFF /* ColorStyle.swift in Sources */,
-				E59AA8012974293A004C6CFF /* GoogleStyleRoundedBorder.swift in Sources */,
-				E59AA80529742DC5004C6CFF /* GoogleStyleText.swift in Sources */,
-				E59AA80D29747216004C6CFF /* GoogleStyleTextFieldModifier.swift in Sources */,
-				E59AA80329742971004C6CFF /* GoogleStylePlaceholder.swift in Sources */,
-				E59AA7FD29730116004C6CFF /* GoogleStyleTextField.swift in Sources */,
+				E59AA80929743A94004C6CFF /* GSColorStyle.swift in Sources */,
+				E59AA8012974293A004C6CFF /* GSRoundedBorder.swift in Sources */,
+				E59AA80529742DC5004C6CFF /* GSText.swift in Sources */,
+				E59AA80D29747216004C6CFF /* GSTextFieldModifier.swift in Sources */,
+				E59AA80329742971004C6CFF /* GSPlaceholder.swift in Sources */,
+				E59AA7FD29730116004C6CFF /* GSTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

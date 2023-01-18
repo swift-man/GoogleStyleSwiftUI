@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoogleStylePlaceholder: View {
+struct GSPlaceholder: View {
   enum OffsetY {
     case top
     case center
@@ -42,7 +42,7 @@ struct GoogleStylePlaceholder: View {
           .frame(alignment: .leading)
           .background(background)
           .font(offsetY == .top ? Font.body : Font.title3)
-          .foregroundColor(offsetY == .top ? foregroundColor : ColorStyle.normal.color)
+          .foregroundColor(offsetY == .top ? foregroundColor : GSColorStyle.normal.color)
           .offset(x: offsetY == .top ? 6 : 10, y: offsetY == .top ? -31 : 0)
 
         Spacer()
@@ -52,13 +52,13 @@ struct GoogleStylePlaceholder: View {
 
 struct GoogleStylePlaceholder_Previews: PreviewProvider {
   @State
-  static var offsetY = GoogleStylePlaceholder.OffsetY.center
+  static var offsetY = GSPlaceholder.OffsetY.center
   
   @State
   static var color = Color.gray
   
   static var previews: some View {
-    GoogleStylePlaceholder(placeholder: "placeholder",
+    GSPlaceholder(placeholder: "placeholder",
                            offsetY: $offsetY,
                            foregroundColor: $color,
                            background: .white)

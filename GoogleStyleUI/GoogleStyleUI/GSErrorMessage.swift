@@ -1,5 +1,5 @@
 //
-//  GoogleStyleErrorMessage.swift
+//  GSErrorMessage.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/15.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoogleStyleErrorMessage: View {
+struct GSErrorMessage: View {
   @Binding
   private var errorMessage: String
   
@@ -17,10 +17,10 @@ struct GoogleStyleErrorMessage: View {
   
   private var errorForegroundColor: Color {
     if errorMessage.isEmpty {
-      return ColorStyle.nonError.color
+      return GSColorStyle.nonError.color
     }
     
-    return ColorStyle.error.color
+    return GSColorStyle.error.color
   }
   
   var body: some View {
@@ -32,7 +32,7 @@ struct GoogleStyleErrorMessage: View {
         .font(.system(size: 16, weight: .bold))
       Spacer()
     }
-    .modifier(GoogleStyleBottomTextModifier())
+    .modifier(GSBottomTextModifier())
   }
 }
 
@@ -41,6 +41,6 @@ struct GoogleStyleErrorMessage_Previews: PreviewProvider {
   static var message = "이름을 입력하세요."
   
   static var previews: some View {
-    GoogleStyleErrorMessage(errorMessage: $message)
+    GSErrorMessage(errorMessage: $message)
   }
 }
