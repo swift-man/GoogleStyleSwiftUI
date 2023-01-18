@@ -25,7 +25,7 @@ struct GSEditingPlaceholder: View {
     self.editingPlaceholder = editingPlaceholder
   }
 
-  public var body: some View {
+  var body: some View {
     if !editingPlaceholder.isEmpty && text.isEmpty && offsetY == .top {
       HStack {
         Text(editingPlaceholder)
