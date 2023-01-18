@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E593A3202978376E00B7EE5E /* LimitLengthTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E593A31F2978376E00B7EE5E /* LimitLengthTextField */; };
+		E593A3252978660100B7EE5E /* GSEditingPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E593A3242978660100B7EE5E /* GSEditingPlaceholder.swift */; };
 		E59AA7D22972F7B5004C6CFF /* GoogleStyleUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7D12972F7B5004C6CFF /* GoogleStyleUIApp.swift */; };
 		E59AA7D42972F7B5004C6CFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7D32972F7B5004C6CFF /* ContentView.swift */; };
 		E59AA7D62972F7B6004C6CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59AA7D52972F7B6004C6CFF /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E593A3242978660100B7EE5E /* GSEditingPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSEditingPlaceholder.swift; sourceTree = "<group>"; };
 		E59AA7CE2972F7B5004C6CFF /* GoogleStyleUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleStyleUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59AA7D12972F7B5004C6CFF /* GoogleStyleUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleStyleUIApp.swift; sourceTree = "<group>"; };
 		E59AA7D32972F7B5004C6CFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				E59AA7FC29730116004C6CFF /* GSTextField.swift */,
 				E59AA80629743A7C004C6CFF /* GSSecureField.swift */,
 				E59AA80C29747216004C6CFF /* GSTextFieldModifier.swift */,
+				E593A3242978660100B7EE5E /* GSEditingPlaceholder.swift */,
 				E59AA80829743A94004C6CFF /* GSColorStyle.swift */,
 				E59AA80229742971004C6CFF /* GSPlaceholder.swift */,
 				E59AA8002974293A004C6CFF /* GSRoundedBorder.swift */,
@@ -320,6 +323,7 @@
 				E59AA80529742DC5004C6CFF /* GSText.swift in Sources */,
 				E59AA80D29747216004C6CFF /* GSTextFieldModifier.swift in Sources */,
 				E59AA80329742971004C6CFF /* GSPlaceholder.swift in Sources */,
+				E593A3252978660100B7EE5E /* GSEditingPlaceholder.swift in Sources */,
 				E59AA7FD29730116004C6CFF /* GSTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

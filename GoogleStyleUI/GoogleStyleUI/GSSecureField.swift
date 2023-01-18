@@ -56,17 +56,20 @@ public struct GSSecureField: View {
       ZStack {
         GSRoundedBorder(color: $color)
         GSPlaceholder(placeholder: placeholder,
-                               offsetY: $offsetY,
-                               foregroundColor: $color,
-                               background: background)
+                      offsetY: $offsetY,
+                      foregroundColor: $color,
+                      background: background)
         LimitLengthSecureField(text: $text,
                                numberOfCharacterLimit: limit)
         .modifier(GSTextFieldModifier(isFocused: isFocused,
-                                               text: $text,
-                                               editingPlaceholder: editingPlaceholder,
-                                               errorMessage: $errorMessage,
-                                               color: $color,
-                                               offsetY: $offsetY))
+                                      text: $text,
+                                      editingPlaceholder: editingPlaceholder,
+                                      errorMessage: $errorMessage,
+                                      color: $color,
+                                      offsetY: $offsetY))
+        GSEditingPlaceholder(text: $text,
+                             editingPlaceholder: editingPlaceholder,
+                             offsetY: $offsetY)
       }
       .frame(height: 40)
       

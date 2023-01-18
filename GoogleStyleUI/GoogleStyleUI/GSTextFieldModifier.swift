@@ -22,8 +22,6 @@ struct GSTextFieldModifier: ViewModifier {
   @Binding
   private var offsetY: GSPlaceholder.OffsetY
   
-  private let editingPlaceholder: String
-  
   init(isFocused: FocusState<Bool>.Binding,
        text: Binding<String>,
        editingPlaceholder: String,
@@ -35,7 +33,6 @@ struct GSTextFieldModifier: ViewModifier {
     self._errorMessage = errorMessage
     self._color = color
     self._offsetY = offsetY
-    self.editingPlaceholder = editingPlaceholder
   }
   
   func body(content: Content) -> some View {
@@ -58,14 +55,6 @@ struct GSTextFieldModifier: ViewModifier {
         }
       })
       .padding()
-    if !editingPlaceholder.isEmpty && text.isEmpty && offsetY == .top {
-      HStack {
-        Text(editingPlaceholder)
-          .offset(x: 17)
-          .foregroundColor(GSColorStyle.normal.color)
-        Spacer()
-      }
-    }
   }
   
   private func configureColor(errorMessage: String, isFocused: Bool) {
