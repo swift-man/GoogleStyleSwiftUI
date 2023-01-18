@@ -1,5 +1,5 @@
 //
-//  GoogleStyleRoundedBorder.swift
+//  GSRoundedBorder.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/15.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoogleStyleRoundedBorder: View {
+struct GSRoundedBorder: View {
   @Binding
   private var color: Color
   
@@ -26,6 +26,6 @@ struct GoogleStyleRoundedBorder_Previews: PreviewProvider {
   static var color = Color.blue
   
   static var previews: some View {
-    GoogleStyleRoundedBorder(color: $color)
+    GSRoundedBorder(color: $color)
   }
 }

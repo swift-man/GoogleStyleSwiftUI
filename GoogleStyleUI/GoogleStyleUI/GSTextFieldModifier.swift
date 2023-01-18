@@ -1,5 +1,5 @@
 //
-//  GoogleStyleTextFieldModifier.swift
+//  GSTextFieldModifier.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GoogleStyleTextFieldModifier: ViewModifier {
+struct GSTextFieldModifier: ViewModifier {
   private var isFocused: FocusState<Bool>.Binding
   
   @Binding
@@ -20,7 +20,7 @@ struct GoogleStyleTextFieldModifier: ViewModifier {
   private var color: Color
 
   @Binding
-  private var offsetY: GoogleStylePlaceholder.OffsetY
+  private var offsetY: GSPlaceholder.OffsetY
   
   private let editingPlaceholder: String
   
@@ -29,7 +29,7 @@ struct GoogleStyleTextFieldModifier: ViewModifier {
        editingPlaceholder: String,
        errorMessage: Binding<String>,
        color: Binding<Color>,
-       offsetY: Binding<GoogleStylePlaceholder.OffsetY>) {
+       offsetY: Binding<GSPlaceholder.OffsetY>) {
     self.isFocused = isFocused
     self._text = text
     self._errorMessage = errorMessage
@@ -62,7 +62,7 @@ struct GoogleStyleTextFieldModifier: ViewModifier {
       HStack {
         Text(editingPlaceholder)
           .offset(x: 17)
-          .foregroundColor(ColorStyle.normal.color)
+          .foregroundColor(GSColorStyle.normal.color)
         Spacer()
       }
     }
@@ -70,9 +70,9 @@ struct GoogleStyleTextFieldModifier: ViewModifier {
   
   private func configureColor(errorMessage: String, isFocused: Bool) {
     if !errorMessage.isEmpty {
-      color = ColorStyle.error.color
+      color = GSColorStyle.error.color
     } else {
-      color = isFocused ? ColorStyle.active.color : ColorStyle.normal.color
+      color = isFocused ? GSColorStyle.active.color : GSColorStyle.normal.color
     }
   }
 }

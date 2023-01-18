@@ -1,5 +1,5 @@
 //
-//  GoogleStyleSecureField.swift
+//  GSTextField.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/15.
@@ -8,7 +8,7 @@
 import SwiftUI
 import LimitLengthTextField
 
-public struct GoogleStyleSecureField: View {
+public struct GSTextField: View {
   
   private var isFocused: FocusState<Bool>.Binding
   
@@ -22,7 +22,7 @@ public struct GoogleStyleSecureField: View {
   private var color: Color
 
   @State
-  private var offsetY: GoogleStylePlaceholder.OffsetY
+  private var offsetY: GSPlaceholder.OffsetY
   
   private let placeholder: String
   private let editingPlaceholder: String
@@ -31,9 +31,9 @@ public struct GoogleStyleSecureField: View {
   private let limit: Int
   
   public init(text: Binding<String>,
+              limit: Int = 100,
               placeholder: String,
               editingPlaceholder: String = "",
-              limit: Int = 100,
               isFocused: FocusState<Bool>.Binding,
               errorMessage: Binding<String>,
               description: String = "",
@@ -43,7 +43,7 @@ public struct GoogleStyleSecureField: View {
     self.limit = limit
     self._errorMessage = errorMessage
     self.placeholder = placeholder
-    self.color = text.wrappedValue.isEmpty ? ColorStyle.normal.color : ColorStyle.active.color
+    self.color = text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color
     self.offsetY = text.wrappedValue.isEmpty ? .center : .top
     self.isFocused = isFocused
     self.description = description
@@ -54,27 +54,28 @@ public struct GoogleStyleSecureField: View {
   public var body: some View {
     VStack {
       ZStack {
-        GoogleStyleRoundedBorder(color: $color)
-        GoogleStylePlaceholder(placeholder: placeholder,
+        GSRoundedBorder(color: $color)
+        GSPlaceholder(placeholder: placeholder,
                                offsetY: $offsetY,
                                foregroundColor: $color,
                                background: background)
-        LimitLengthSecureField(text: $text,
-                               numberOfCharacterLimit: limit)
-        .modifier(GoogleStyleTextFieldModifier(isFocused: isFocused,
+        LimitLengthTextField(text: $text,
+                             numberOfCharacterLimit: limit)
+        .modifier(GSTextFieldModifier(isFocused: isFocused,
                                                text: $text,
                                                editingPlaceholder: editingPlaceholder,
                                                errorMessage: $errorMessage,
                                                color: $color,
                                                offsetY: $offsetY))
+        
       }
       .frame(height: 40)
       
       if !errorMessage.isEmpty {
-        GoogleStyleErrorMessage(errorMessage: $errorMessage)
+        GSErrorMessage(errorMessage: $errorMessage)
       } else {
         if !description.isEmpty {
-          GoogleStyleText(description: description)
+          GSText(description: description)
         }
       }
     }

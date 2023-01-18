@@ -13,7 +13,7 @@ struct LogInView: View {
   
   @State
   var text2 = ""
-
+  
   @State
   var errorMessage1 = ""
   
@@ -27,23 +27,23 @@ struct LogInView: View {
   private var isFocused2: Bool
   
   var body: some View {
-    GoogleStyleTextField(text: $text1,
-                         limit: 10,
-                         placeholder: "사용자 이름",
-                         editingPlaceholder: "10자리",
-                         isFocused: $isFocused1,
-                         errorMessage: $errorMessage1,
-                         description: "문자, 숫자, 마침표를 사용할 수 있습니다.")
-  
+    GSTextField(text: $text1,
+                limit: 10,
+                placeholder: "사용자 이름",
+                editingPlaceholder: "10자리",
+                isFocused: $isFocused1,
+                errorMessage: $errorMessage1,
+                description: "문자, 숫자, 마침표를 사용할 수 있습니다.")
+    
     .padding(EdgeInsets(top: 0,
                         leading: 10,
                         bottom: 0,
                         trailing: 10))
     
-    GoogleStyleSecureField(text: $text2,
-                           placeholder: "비밀번호",
-                           isFocused: $isFocused2,
-                           errorMessage: $errorMessage2)
+    GSSecureField(text: $text2,
+                  placeholder: "비밀번호",
+                  isFocused: $isFocused2,
+                  errorMessage: $errorMessage2)
     .padding(EdgeInsets(top: 0,
                         leading: 10,
                         bottom: 0,
