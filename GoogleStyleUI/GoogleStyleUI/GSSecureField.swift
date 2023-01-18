@@ -71,7 +71,7 @@ public struct GSSecureField: View {
                              editingPlaceholder: editingPlaceholder,
                              offsetY: $offsetY)
       }
-      .frame(height: 40)
+      .frame(height: 45)
       
       if !errorMessage.isEmpty {
         GSErrorMessage(errorMessage: $errorMessage)

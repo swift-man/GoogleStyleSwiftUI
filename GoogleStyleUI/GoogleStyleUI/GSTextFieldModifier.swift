@@ -54,7 +54,10 @@ struct GSTextFieldModifier: ViewModifier {
           configureColor(errorMessage: newValue, isFocused: isFocused.wrappedValue)
         }
       })
-      .padding()
+      .padding(EdgeInsets(top: 5,
+                          leading: 15,
+                          bottom: 5,
+                          trailing: 15))
   }
   
   private func configureColor(errorMessage: String, isFocused: Bool) {
