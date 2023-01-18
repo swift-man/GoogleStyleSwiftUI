@@ -17,7 +17,11 @@ struct GSRoundedBorder: View {
   
   var body: some View {
     RoundedRectangle(cornerRadius: 5)
-      .stroke(color, lineWidth: color == Color.blue ? 2 : 1)
+      .stroke(color, lineWidth: isBold ? 2 : 1)
+  }
+  
+  private var isBold: Bool {
+    color == GSColorStyle.error.color || color == GSColorStyle.active.color
   }
 }
 
