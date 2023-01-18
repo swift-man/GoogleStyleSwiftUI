@@ -44,7 +44,7 @@ struct ContentView: View {
 }
 ```
 
-## Secure
+## SecureField
 ```swift
 import SwiftUI
 
