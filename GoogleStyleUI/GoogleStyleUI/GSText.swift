@@ -20,9 +20,9 @@ struct GSText: View {
         .foregroundColor(GSColorStyle.normal.color)
         .font(.system(size: 14, weight: .regular))
         .padding(EdgeInsets(top: 0,
-                            leading: 10,
+                            leading: 15,
                             bottom: 0,
-                            trailing: 0))
+                            trailing: 15))
       Spacer()
     }
     .modifier(GSBottomTextModifier())

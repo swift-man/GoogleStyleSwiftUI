@@ -43,7 +43,7 @@ struct GSPlaceholder: View {
           .background(background)
           .font(offsetY == .top ? Font.body : Font.title3)
           .foregroundColor(offsetY == .top ? foregroundColor : GSColorStyle.normal.color)
-          .offset(x: offsetY == .top ? 6 : 10, y: offsetY == .top ? -31 : 0)
+          .offset(x: offsetY == .top ? 6 : 15, y: offsetY == .top ? -27 : 0)
 
         Spacer()
       }
