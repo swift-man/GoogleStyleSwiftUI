@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E593A3202978376E00B7EE5E /* LimitLengthTextField in Frameworks */ = {isa = PBXBuildFile; productRef = E593A31F2978376E00B7EE5E /* LimitLengthTextField */; };
 		E59AA7D22972F7B5004C6CFF /* GoogleStyleUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7D12972F7B5004C6CFF /* GoogleStyleUIApp.swift */; };
 		E59AA7D42972F7B5004C6CFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59AA7D32972F7B5004C6CFF /* ContentView.swift */; };
 		E59AA7D62972F7B6004C6CFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E59AA7D52972F7B6004C6CFF /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E593A3202978376E00B7EE5E /* LimitLengthTextField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +188,9 @@
 			dependencies = (
 			);
 			name = GoogleStyleUI;
+			packageProductDependencies = (
+				E593A31F2978376E00B7EE5E /* LimitLengthTextField */,
+			);
 			productName = GoogleStyleUI;
 			productReference = E59AA7CE2972F7B5004C6CFF /* GoogleStyleUI.app */;
 			productType = "com.apple.product-type.application";
@@ -258,6 +263,9 @@
 				Base,
 			);
 			mainGroup = E59AA7C52972F7B5004C6CFF;
+			packageReferences = (
+				E593A31E2978376E00B7EE5E /* XCRemoteSwiftPackageReference "LimitLengthTextField" */,
+			);
 			productRefGroup = E59AA7CF2972F7B5004C6CFF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -658,6 +666,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E593A31E2978376E00B7EE5E /* XCRemoteSwiftPackageReference "LimitLengthTextField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swift-man/LimitLengthTextField";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E593A31F2978376E00B7EE5E /* LimitLengthTextField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E593A31E2978376E00B7EE5E /* XCRemoteSwiftPackageReference "LimitLengthTextField" */;
+			productName = LimitLengthTextField;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E59AA7C62972F7B5004C6CFF /* Project object */;
 }

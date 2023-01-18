@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LimitLengthTextField
 
 public struct GoogleStyleSecureField: View {
   
@@ -24,17 +25,22 @@ public struct GoogleStyleSecureField: View {
   private var offsetY: GoogleStylePlaceholder.OffsetY
   
   private let placeholder: String
+  private let editingPlaceholder: String
   private let description: String
   private let background: Color
+  private let limit: Int
   
   public init(text: Binding<String>,
               placeholder: String,
+              editingPlaceholder: String = "",
+              limit: Int = 100,
               isFocused: FocusState<Bool>.Binding,
               errorMessage: Binding<String>,
               description: String = "",
               background: Color = .background) {
     
     self._text = text
+    self.limit = limit
     self._errorMessage = errorMessage
     self.placeholder = placeholder
     self.color = text.wrappedValue.isEmpty ? ColorStyle.normal.color : ColorStyle.active.color
@@ -42,6 +48,7 @@ public struct GoogleStyleSecureField: View {
     self.isFocused = isFocused
     self.description = description
     self.background = background
+    self.editingPlaceholder = editingPlaceholder
   }
 
   public var body: some View {
@@ -52,12 +59,14 @@ public struct GoogleStyleSecureField: View {
                                offsetY: $offsetY,
                                foregroundColor: $color,
                                background: background)
-        SecureField("", text: $text)
-          .modifier(GoogleStyleTextFieldModifier(isFocused: isFocused,
-                                                 text: $text,
-                                                 errorMessage: $errorMessage,
-                                                 color: $color,
-                                                 offsetY: $offsetY))
+        LimitLengthSecureField(text: $text,
+                               numberOfCharacterLimit: limit)
+        .modifier(GoogleStyleTextFieldModifier(isFocused: isFocused,
+                                               text: $text,
+                                               editingPlaceholder: editingPlaceholder,
+                                               errorMessage: $errorMessage,
+                                               color: $color,
+                                               offsetY: $offsetY))
       }
       .frame(height: 40)
       

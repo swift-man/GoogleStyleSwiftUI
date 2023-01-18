@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "limitlengthtextfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-man/LimitLengthTextField",
+      "state" : {
+        "branch" : "main",
+        "revision" : "03e15a27bc6e68d26d3b9c404e13995771d677e4"
+      }
+    }
+  ],
+  "version" : 2
+}
