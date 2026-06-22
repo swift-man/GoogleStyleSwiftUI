@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct GSErrorMessage: View {
-  @Binding
-  private var errorMessage: String
+  private let errorMessage: String
   
-  init(errorMessage: Binding<String>) {
-    self._errorMessage = errorMessage
+  init(errorMessage: String) {
+    self.errorMessage = errorMessage
   }
   
   private var errorForegroundColor: Color {
@@ -41,6 +40,6 @@ struct GoogleStyleErrorMessage_Previews: PreviewProvider {
   static var message = "이름을 입력하세요."
   
   static var previews: some View {
-    GSErrorMessage(errorMessage: $message)
+    GSErrorMessage(errorMessage: message)
   }
 }

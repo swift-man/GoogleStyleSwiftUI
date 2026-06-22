@@ -76,7 +76,7 @@ public struct GSSecureField: View {
       .frame(height: 45)
       
       if !errorMessage.isEmpty {
-        GSErrorMessage(errorMessage: $errorMessage)
+        GSErrorMessage(errorMessage: errorMessage)
       } else {
         if !description.isEmpty {
           GSText(description: description)

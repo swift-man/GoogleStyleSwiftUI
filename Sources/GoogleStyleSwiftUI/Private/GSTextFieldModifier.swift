@@ -37,26 +37,33 @@ struct GSTextFieldModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
       .focused(isFocused)
-      .onChange(of: isFocused.wrappedValue) { newValue in
+      .onChange(of: isFocused.wrappedValue, perform: { newValue in
         withAnimation(.easeInOut(duration: 0.15)) {
-          if newValue {
-            offsetY = .top
-          } else {
-            offsetY = text.isEmpty ? .center : .top
-          }
-          
-          configureColor(errorMessage: errorMessage, isFocused: newValue)
+          synchronizeState(isFocused: newValue,
+                           errorMessage: errorMessage)
         }
-      }
+      })
       .onChange(of: errorMessage, perform: { newValue in
         withAnimation(.easeInOut(duration: 0.15)) {
-          configureColor(errorMessage: newValue, isFocused: isFocused.wrappedValue)
+          synchronizeState(isFocused: isFocused.wrappedValue,
+                           errorMessage: newValue)
+        }
+      })
+      .onChange(of: text, perform: { _ in
+        withAnimation(.easeInOut(duration: 0.15)) {
+          synchronizeState(isFocused: isFocused.wrappedValue,
+                           errorMessage: errorMessage)
         }
       })
       .padding(EdgeInsets(top: 5,
                           leading: 15,
                           bottom: 5,
                           trailing: 15))
+  }
+
+  private func synchronizeState(isFocused: Bool, errorMessage: String) {
+    offsetY = isFocused || !text.isEmpty ? .top : .center
+    configureColor(errorMessage: errorMessage, isFocused: isFocused)
   }
   
   private func configureColor(errorMessage: String, isFocused: Bool) {
