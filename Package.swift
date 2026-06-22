@@ -16,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-man/LimitLengthTextField", from: "0.7.0"),
-        .package(url: "https://github.com/swiftlang/swift-testing", exact: "0.1.0")
+        .package(url: "https://github.com/swiftlang/swift-testing", from: "0.1.0")
     ],
     targets: [
         .target(

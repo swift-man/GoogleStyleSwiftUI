@@ -43,11 +43,11 @@ public struct GSSecureField: View {
               background: Color = .background) {
     
     self._text = text
-    self.limit = GSLimitPolicy.normalizedLimit(limit)
+    self.limit = limit
     self._errorMessage = errorMessage
     self.placeholder = placeholder
-    self.color = text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color
-    self.offsetY = text.wrappedValue.isEmpty ? .center : .top
+    self._color = State(initialValue: text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color)
+    self._offsetY = State(initialValue: text.wrappedValue.isEmpty ? .center : .top)
     self.isFocused = isFocused
     self.description = description
     self.background = background
