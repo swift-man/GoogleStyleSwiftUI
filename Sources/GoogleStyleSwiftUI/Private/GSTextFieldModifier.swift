@@ -24,7 +24,6 @@ struct GSTextFieldModifier: ViewModifier {
   
   init(isFocused: FocusState<Bool>.Binding,
        text: Binding<String>,
-       editingPlaceholder: String,
        errorMessage: Binding<String>,
        color: Binding<Color>,
        offsetY: Binding<GSPlaceholder.OffsetY>) {

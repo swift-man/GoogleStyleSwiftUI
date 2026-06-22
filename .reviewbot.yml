@@ -1,0 +1,48 @@
+version: 1
+
+review:
+  include:
+    - "Package.swift"
+    - "Package.resolved"
+    - "Sources/**/*.swift"
+    - "Tests/**/*.swift"
+    - "README.md"
+    - "AGENTS.md"
+    - ".reviewbot.yml"
+
+  exclude:
+    # Local noise
+    - ".DS_Store"
+    - "**/.DS_Store"
+    - ".idea/**"
+    - ".vscode/**"
+
+    # SwiftPM / Xcode build artifacts
+    - ".build/**"
+    - ".swiftpm/**"
+    - "build/**"
+    - "Packages/**"
+    - "DerivedData/**"
+
+    # Xcode local workspace/state files
+    - "**/*.xcuserstate"
+    - "**/xcuserdata/**"
+    - "**/*.xcodeproj/**"
+    - "**/*.xcworkspace/**"
+
+    # Logs / archives
+    - "logs/**"
+    - "**/*.log"
+    - "*.dSYM"
+    - "*.dSYM.zip"
+    - "*.xcarchive"
+
+  always_review:
+    - ".reviewbot.yml"
+    - "AGENTS.md"
+    - "README.md"
+    - "Package.swift"
+    - "Package.resolved"
+    - "Sources/GoogleStyleSwiftUI/Public/Color+.swift"
+    - "Sources/GoogleStyleSwiftUI/Public/GSTextField.swift"
+    - "Sources/GoogleStyleSwiftUI/Public/GSSecureField.swift"

@@ -1,14 +1,13 @@
 //
-//  GSSecureField.swift
+//  GSTextField.swift
 //  GoogleStyleUI
 //
 //  Created by SwiftMan on 2023/01/15.
 //
 
 import SwiftUI
-import LimitLengthTextField
 
-public struct GSSecureField: View {
+public struct GSTextField: View {
   
   private var isFocused: FocusState<Bool>.Binding
   
@@ -29,11 +28,15 @@ public struct GSSecureField: View {
   private let description: String
   private let background: Color
   private let limit: Int
-  
+
+  /// Google style text input with floating placeholder and max length support.
+  ///
+  /// The `limit` value controls the maximum character count.
+  /// If a non-positive value is provided, the effective limit is normalized to `1`.
   public init(text: Binding<String>,
+              limit: Int = 100,
               placeholder: String,
               editingPlaceholder: String = "",
-              limit: Int = 100,
               isFocused: FocusState<Bool>.Binding,
               errorMessage: Binding<String>,
               description: String = "",
@@ -43,8 +46,8 @@ public struct GSSecureField: View {
     self.limit = limit
     self._errorMessage = errorMessage
     self.placeholder = placeholder
-    self.color = text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color
-    self.offsetY = text.wrappedValue.isEmpty ? .center : .top
+    self._color = State(initialValue: text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color)
+    self._offsetY = State(initialValue: text.wrappedValue.isEmpty ? .center : .top)
     self.isFocused = isFocused
     self.description = description
     self.background = background
@@ -59,11 +62,10 @@ public struct GSSecureField: View {
                       offsetY: $offsetY,
                       foregroundColor: $color,
                       background: background)
-        LimitLengthSecureField(text: $text,
-                               numberOfCharacterLimit: limit)
+        GSLimitedLengthTextField(text: $text,
+                                 limit: limit)
         .modifier(GSTextFieldModifier(isFocused: isFocused,
                                       text: $text,
-                                      editingPlaceholder: editingPlaceholder,
                                       errorMessage: $errorMessage,
                                       color: $color,
                                       offsetY: $offsetY))
