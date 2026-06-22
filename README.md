@@ -4,7 +4,7 @@
 ![Badge](https://img.shields.io/badge/swift-white.svg?style=flat-square&logo=Swift)
 ![Badge](https://img.shields.io/badge/SwiftUI-001b87.svg?style=flat-square&logo=Swift&logoColor=black)
 ![Badge - Version](https://img.shields.io/badge/Version-0.0.0-1177AA?style=flat-square)
-![Badge - Swift Package Manager](https://img.shields.io/badge/SPM-planned-orange?style=flat-square)
+![Badge - Swift Package Manager](https://img.shields.io/badge/SPM-Supported-orange?style=flat-square)
 ![Badge - Platform](https://img.shields.io/badge/platform-macOS_12.0|iOS_15.0-yellow?style=flat-square)
 ![Badge - License](https://img.shields.io/badge/license-MIT-black?style=flat-square)
 
@@ -18,7 +18,7 @@
 * [ ] DatePicker
 * [ ] DatePicker - Lunar Segment
 * [ ] Configure Style Appearance - Color, Font
-* [ ] SPM
+* [x] Swift Package Manager
 
 ![Image](https://drive.google.com/uc?export=view&id=1hMiMVD3qbRP6fWTKKsp4H7ASxYneAo1M)  
 
@@ -27,17 +27,12 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State
-  var text = ""
-
-  @State
-  var errorMessage = ""
-
-  @FocusState
-  var isFocused: Bool
+  @State var text = ""
+  @State var errorMessage = ""
+  @FocusState var isFocused: Bool
 
   var body: some View {
-    GSTextField(text: $text1,
+    GSTextField(text: $text,
                 limit: 10,
                 placeholder: "사용자 이름",
                 editingPlaceholder: "10자리",
@@ -57,14 +52,9 @@ struct ContentView: View {
 import SwiftUI
 
 struct ContentView: View {
-  @State
-  var text = ""
-
-  @State
-  var errorMessage = ""
-
-  @FocusState
-  var isFocused: Bool
+  @State var text = ""
+  @State var errorMessage = ""
+  @FocusState var isFocused: Bool
 
   var body: some View {
     GSSecureField(text: $text,

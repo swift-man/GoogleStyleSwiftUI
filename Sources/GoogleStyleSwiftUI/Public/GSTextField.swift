@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import LimitLengthTextField
 
 public struct GSTextField: View {
   
@@ -29,7 +28,11 @@ public struct GSTextField: View {
   private let description: String
   private let background: Color
   private let limit: Int
-  
+
+  /// Google style text input with floating placeholder and max length support.
+  ///
+  /// The `limit` value controls the maximum character count.
+  /// If a non-positive value is provided, the effective limit is normalized to `1`.
   public init(text: Binding<String>,
               limit: Int = 100,
               placeholder: String,
@@ -40,7 +43,7 @@ public struct GSTextField: View {
               background: Color = .background) {
     
     self._text = text
-    self.limit = limit
+    self.limit = GSLimitPolicy.normalizedLimit(limit)
     self._errorMessage = errorMessage
     self.placeholder = placeholder
     self.color = text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color
@@ -59,11 +62,10 @@ public struct GSTextField: View {
                       offsetY: $offsetY,
                       foregroundColor: $color,
                       background: background)
-        LimitLengthTextField(text: $text,
-                             numberOfCharacterLimit: limit)
+        GSLimitedLengthTextField(text: $text,
+                                 limit: limit)
         .modifier(GSTextFieldModifier(isFocused: isFocused,
                                       text: $text,
-                                      editingPlaceholder: editingPlaceholder,
                                       errorMessage: $errorMessage,
                                       color: $color,
                                       offsetY: $offsetY))
