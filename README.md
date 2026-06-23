@@ -64,6 +64,30 @@ struct ContentView: View {
 }
 ```
 
+## Multiline TextField
+`GSMultilineTextField`는 iOS 16 이상에서 세로 확장 입력을 지원합니다.
+
+```swift
+import SwiftUI
+import GoogleStyleSwiftUI
+
+struct MemoView: View {
+  @State var text = ""
+  @State var errorMessage = ""
+  @FocusState var isFocused: Bool
+
+  var body: some View {
+    GSMultilineTextField(text: $text,
+                         limit: 4000,
+                         placeholder: "내용",
+                         editingPlaceholder: "엔터로 줄바꿈",
+                         isFocused: $isFocused,
+                         errorMessage: $errorMessage,
+                         lineLimit: 1...8)
+  }
+}
+```
+
 ## SecureField
 ```swift
 import SwiftUI
