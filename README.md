@@ -3,7 +3,7 @@
 
 ![Badge](https://img.shields.io/badge/swift-white.svg?style=flat-square&logo=Swift)
 ![Badge](https://img.shields.io/badge/SwiftUI-001b87.svg?style=flat-square&logo=Swift&logoColor=black)
-![Badge - Version](https://img.shields.io/badge/Version-0.0.0-1177AA?style=flat-square)
+![Badge - Version](https://img.shields.io/badge/Version-1.0.0-1177AA?style=flat-square)
 ![Badge - Swift Package Manager](https://img.shields.io/badge/SPM-Supported-orange?style=flat-square)
 ![Badge - Platform](https://img.shields.io/badge/platform-macOS_12.0|iOS_15.0-yellow?style=flat-square)
 ![Badge - License](https://img.shields.io/badge/license-MIT-black?style=flat-square)
@@ -22,11 +22,26 @@
 
 ![Image](https://drive.google.com/uc?export=view&id=1hMiMVD3qbRP6fWTKKsp4H7ASxYneAo1M)  
 
+## Requirements
+* iOS 15.0+
+* macOS 12.0+
+* Swift 5.9+
+
+## Installation
+```swift
+dependencies: [
+  .package(url: "https://github.com/swift-man/GoogleStyleSwiftUI.git", from: "1.0.0")
+]
+```
+
+Add `GoogleStyleSwiftUI` to your target dependencies.
+
 ## TextField
 `limit` 기본값은 `100`이며, `0` 이하 값은 안전한 최소값인 `1`로 정규화됩니다.
 
 ```swift
 import SwiftUI
+import GoogleStyleSwiftUI
 
 struct ContentView: View {
   @State var text = ""
@@ -52,6 +67,7 @@ struct ContentView: View {
 ## SecureField
 ```swift
 import SwiftUI
+import GoogleStyleSwiftUI
 
 struct ContentView: View {
   @State var text = ""
