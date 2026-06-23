@@ -11,7 +11,7 @@
 ## Feature
 * [x] TextField
 * [x] SecureField
-* [x] TextField - limiteCount, prompt
+* [x] TextField - limitCount, prompt
 * [x] Refactor - SecureField
 * [ ] Fix - padding()
 * [ ] Picker
@@ -23,6 +23,8 @@
 ![Image](https://drive.google.com/uc?export=view&id=1hMiMVD3qbRP6fWTKKsp4H7ASxYneAo1M)  
 
 ## TextField
+`limit` 기본값은 `100`이며, `0` 이하 값은 안전한 최소값인 `1`로 정규화됩니다.
+
 ```swift
 import SwiftUI
 
