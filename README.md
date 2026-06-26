@@ -29,6 +29,9 @@
 * macOS 13.0+
 * Swift 5.9+
 
+## Documentation
+* [DocC Documentation](https://swift-man.github.io/docs/GoogleStyleSwiftUI/documentation/googlestyleswiftui/)
+
 ## Installation
 ```swift
 dependencies: [
