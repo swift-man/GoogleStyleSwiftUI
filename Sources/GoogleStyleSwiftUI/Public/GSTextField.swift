@@ -48,7 +48,7 @@ public struct GSTextField: View {
               containerBackground: Color? = nil) {
     
     self._text = text
-    self.limit = limit
+    self.limit = GSLimitPolicy.normalizedLimit(limit)
     self._errorMessage = errorMessage
     self.placeholder = placeholder
     self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
