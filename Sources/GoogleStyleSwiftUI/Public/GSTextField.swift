@@ -8,6 +8,9 @@
 import SwiftUI
 
 public struct GSTextField: View {
+  private enum Layout {
+    static let minimumHeight: CGFloat = 55
+  }
   
   private var isFocused: FocusState<Bool>.Binding
   
@@ -27,6 +30,7 @@ public struct GSTextField: View {
   private let editingPlaceholder: String
   private let description: String
   private let background: Color
+  private let containerBackground: Color?
   private let limit: Int
 
   /// Google style text input with floating placeholder and max length support.
@@ -40,7 +44,8 @@ public struct GSTextField: View {
               isFocused: FocusState<Bool>.Binding,
               errorMessage: Binding<String>,
               description: String = "",
-              background: Color = .background) {
+              background: Color = .background,
+              containerBackground: Color? = nil) {
     
     self._text = text
     self.limit = limit
@@ -51,17 +56,20 @@ public struct GSTextField: View {
     self.isFocused = isFocused
     self.description = description
     self.background = background
+    self.containerBackground = containerBackground
     self.editingPlaceholder = editingPlaceholder
   }
 
   public var body: some View {
     VStack {
       ZStack {
+        background
         GSRoundedBorder(color: $color)
         GSPlaceholder(placeholder: placeholder,
                       offsetY: $offsetY,
                       foregroundColor: $color,
-                      background: background)
+                      background: background,
+                      floatingYOffset: GSFloatingLabelMetrics.centeredYOffset(containerHeight: Layout.minimumHeight))
         GSLimitedLengthTextField(text: $text,
                                  limit: limit)
         .modifier(GSTextFieldModifier(isFocused: isFocused,
@@ -73,7 +81,7 @@ public struct GSTextField: View {
                              editingPlaceholder: editingPlaceholder,
                              offsetY: $offsetY)
       }
-      .frame(height: 45)
+      .frame(height: Layout.minimumHeight)
       
       if !errorMessage.isEmpty {
         GSErrorMessage(errorMessage: errorMessage)
@@ -83,5 +91,6 @@ public struct GSTextField: View {
         }
       }
     }
+    .modifier(GSInputContainerModifier(background: containerBackground))
   }
 }

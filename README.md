@@ -11,6 +11,8 @@
 ## Feature
 * [x] TextField
 * [x] SecureField
+* [x] Multiline TextField
+* [x] TextEditor / TextView
 * [x] TextField - limitCount, prompt
 * [x] Refactor - SecureField
 * [ ] Fix - padding()
@@ -84,6 +86,31 @@ struct MemoView: View {
                          isFocused: $isFocused,
                          errorMessage: $errorMessage,
                          lineLimit: 1...8)
+  }
+}
+```
+
+## TextView
+`GSTextView`는 SwiftUI `TextEditor` 기반의 긴 본문 입력을 지원합니다. SwiftUI 이름을 선호하면 `GSTextEditor` alias를 사용할 수 있습니다.
+
+```swift
+import SwiftUI
+import GoogleStyleSwiftUI
+
+struct ArticleView: View {
+  @State var text = ""
+  @State var errorMessage = ""
+  @FocusState var isFocused: Bool
+
+  var body: some View {
+    GSTextView(text: $text,
+               limit: 4000,
+               placeholder: "본문",
+               editingPlaceholder: "내용을 입력하세요.",
+               isFocused: $isFocused,
+               errorMessage: $errorMessage,
+               description: "긴 문장을 입력할 수 있습니다.",
+               minHeight: 140)
   }
 }
 ```

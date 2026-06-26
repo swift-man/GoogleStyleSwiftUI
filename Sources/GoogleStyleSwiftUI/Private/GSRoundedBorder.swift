@@ -17,7 +17,7 @@ struct GSRoundedBorder: View {
   
   var body: some View {
     RoundedRectangle(cornerRadius: 5)
-      .stroke(color, lineWidth: isBold ? 2 : 1)
+      .strokeBorder(color, lineWidth: isBold ? 2 : 1)
   }
   
   private var isBold: Bool {

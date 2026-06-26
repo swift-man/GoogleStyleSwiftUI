@@ -8,6 +8,9 @@
 import SwiftUI
 
 public struct GSSecureField: View {
+  private enum Layout {
+    static let minimumHeight: CGFloat = 55
+  }
   
   private var isFocused: FocusState<Bool>.Binding
   
@@ -61,7 +64,8 @@ public struct GSSecureField: View {
         GSPlaceholder(placeholder: placeholder,
                       offsetY: $offsetY,
                       foregroundColor: $color,
-                      background: background)
+                      background: background,
+                      floatingYOffset: GSFloatingLabelMetrics.centeredYOffset(containerHeight: Layout.minimumHeight))
         GSLimitedLengthSecureField(text: $text,
                                    limit: limit)
         .modifier(GSTextFieldModifier(isFocused: isFocused,
@@ -73,7 +77,7 @@ public struct GSSecureField: View {
                              editingPlaceholder: editingPlaceholder,
                              offsetY: $offsetY)
       }
-      .frame(height: 45)
+      .frame(height: Layout.minimumHeight)
       
       if !errorMessage.isEmpty {
         GSErrorMessage(errorMessage: errorMessage)
