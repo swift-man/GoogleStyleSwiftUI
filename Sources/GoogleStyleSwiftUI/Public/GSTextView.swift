@@ -1,25 +1,23 @@
 //
-//  GSMultilineTextField.swift
+//  GSTextView.swift
 //  GoogleStyleUI
 //
 
 import SwiftUI
 
-@available(iOS 16.0, macOS 13.0, *)
-public struct GSMultilineTextField: View {
+public struct GSTextView: View {
 
   private enum Layout {
-    static let minimumHeight: CGFloat = 45
-    static let horizontalTextPadding: CGFloat = 15
-    static let floatingTextTopPadding: CGFloat = 10
-    static let collapsedTextTopPadding: CGFloat = 5
-    static let textBottomPadding: CGFloat = 7
+    static let horizontalTextPadding: CGFloat = 11
+    static let floatingTextTopPadding: CGFloat = 15
+    static let collapsedTextTopPadding: CGFloat = 10
+    static let textBottomPadding: CGFloat = 12
     static let floatingLabelXOffset: CGFloat = GSFloatingLabelMetrics.floatingHorizontalOffset
     static let floatingLabelYOffset: CGFloat = GSFloatingLabelMetrics.topLineCenteredYOffset
     static let collapsedLabelXOffset: CGFloat = 15
     static let collapsedLabelYOffset: CGFloat = 11
     static let editingPlaceholderXOffset: CGFloat = 17
-    static let editingPlaceholderYOffset: CGFloat = 12
+    static let editingPlaceholderYOffset: CGFloat = 23
   }
 
   private var isFocused: FocusState<Bool>.Binding
@@ -40,18 +38,25 @@ public struct GSMultilineTextField: View {
   private let editingPlaceholder: String
   private let description: String
   private let background: Color
+  private let containerBackground: Color?
   private let limit: Int
-  private let lineLimit: ClosedRange<Int>
+  private let minHeight: CGFloat
 
+  /// Google style long-form text editor with floating placeholder and max length support.
+  ///
+  /// Use `GSTextView` for long body text. Use `GSMultilineTextField` when you need
+  /// SwiftUI's multiline `TextField(axis: .vertical)` behavior.
+  /// If a non-positive `limit` is provided, the effective limit is normalized to `1`.
   public init(text: Binding<String>,
-              limit: Int = 1000,
+              limit: Int = 4000,
               placeholder: String,
               editingPlaceholder: String = "",
               isFocused: FocusState<Bool>.Binding,
               errorMessage: Binding<String>,
               description: String = "",
               background: Color = .background,
-              lineLimit: ClosedRange<Int> = 1...8) {
+              containerBackground: Color? = nil,
+              minHeight: CGFloat = 120) {
     self._text = text
     self.limit = GSLimitPolicy.normalizedLimit(limit)
     self._errorMessage = errorMessage
@@ -60,7 +65,8 @@ public struct GSMultilineTextField: View {
     self.isFocused = isFocused
     self.description = description
     self.background = background
-    self.lineLimit = Self.normalizedLineLimit(lineLimit)
+    self.containerBackground = containerBackground
+    self.minHeight = max(45, minHeight)
     self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
                                                                isFocused: isFocused.wrappedValue))
     self._isPlaceholderFloating = State(initialValue: !text.wrappedValue.isEmpty || isFocused.wrappedValue)
@@ -71,17 +77,17 @@ public struct GSMultilineTextField: View {
       ZStack(alignment: .topLeading) {
         background
 
-        GSRoundedBorder(color: $color)
-
-        TextField("", text: $text, axis: .vertical)
-          .lineLimit(lineLimit)
+        TextEditor(text: $text)
           .focused(isFocused)
-          .textFieldStyle(.plain)
           .padding(EdgeInsets(top: isPlaceholderFloating ? Layout.floatingTextTopPadding : Layout.collapsedTextTopPadding,
                               leading: Layout.horizontalTextPadding,
                               bottom: Layout.textBottomPadding,
                               trailing: Layout.horizontalTextPadding))
-          .background(background)
+          .frame(minHeight: minHeight)
+          .gsTextEditorBackground(background)
+
+        GSRoundedBorder(color: $color)
+          .allowsHitTesting(false)
 
         placeholderView
           .allowsHitTesting(false)
@@ -89,7 +95,7 @@ public struct GSMultilineTextField: View {
           .allowsHitTesting(false)
       }
       .padding(.top, isPlaceholderFloating ? 8 : 0)
-      .frame(minHeight: Layout.minimumHeight)
+      .frame(minHeight: minHeight)
       .onAppear {
         enforceLimit(text)
         synchronizeState(isFocused: isFocused.wrappedValue, errorMessage: errorMessage)
@@ -118,6 +124,7 @@ public struct GSMultilineTextField: View {
         GSText(description: description)
       }
     }
+    .modifier(GSInputContainerModifier(background: containerBackground))
   }
 
   private var placeholderView: some View {
@@ -161,10 +168,19 @@ public struct GSMultilineTextField: View {
 
     text = String(value.prefix(limit))
   }
+}
 
-  private static func normalizedLineLimit(_ lineLimit: ClosedRange<Int>) -> ClosedRange<Int> {
-    let lowerBound = max(1, lineLimit.lowerBound)
-    let upperBound = max(lowerBound, lineLimit.upperBound)
-    return lowerBound...upperBound
+public typealias GSTextEditor = GSTextView
+
+private extension View {
+  @ViewBuilder
+  func gsTextEditorBackground(_ background: Color) -> some View {
+    if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
+      self
+        .scrollContentBackground(.hidden)
+        .background(background)
+    } else {
+      self.background(background)
+    }
   }
 }

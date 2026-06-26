@@ -45,4 +45,6 @@ review:
     - "Package.resolved"
     - "Sources/GoogleStyleSwiftUI/Public/Color+.swift"
     - "Sources/GoogleStyleSwiftUI/Public/GSTextField.swift"
+    - "Sources/GoogleStyleSwiftUI/Public/GSMultilineTextField.swift"
+    - "Sources/GoogleStyleSwiftUI/Public/GSTextView.swift"
     - "Sources/GoogleStyleSwiftUI/Public/GSSecureField.swift"

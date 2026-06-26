@@ -15,6 +15,7 @@ struct GSPlaceholder: View {
   private let placeholder: String
   
   private let background: Color
+  private let floatingYOffset: CGFloat
   
   @Binding
   private var foregroundColor: Color
@@ -25,25 +26,28 @@ struct GSPlaceholder: View {
   init(placeholder: String,
        offsetY: Binding<OffsetY>,
        foregroundColor: Binding<Color>,
-       background: Color) {
+       background: Color,
+       floatingYOffset: CGFloat) {
     self._offsetY = offsetY
     self._foregroundColor = foregroundColor
     self.placeholder = placeholder
     self.background = background
+    self.floatingYOffset = floatingYOffset
   }
   
   var body: some View {
       HStack {
         Text(placeholder)
           .padding(EdgeInsets(top: 0,
-                              leading: offsetY == .top ? 5 : 0,
+                              leading: offsetY == .top ? GSFloatingLabelMetrics.floatingLeadingPadding : 0,
                               bottom: 0,
                               trailing: 5))
           .frame(alignment: .leading)
           .background(background)
           .font(offsetY == .top ? Font.body : Font.title3)
           .foregroundColor(offsetY == .top ? foregroundColor : GSColorStyle.normal.color)
-          .offset(x: offsetY == .top ? 6 : 15, y: offsetY == .top ? -27 : 0)
+          .offset(x: offsetY == .top ? GSFloatingLabelMetrics.floatingHorizontalOffset : 15,
+                  y: offsetY == .top ? floatingYOffset : 0)
 
         Spacer()
       }
@@ -61,6 +65,7 @@ struct GoogleStylePlaceholder_Previews: PreviewProvider {
     GSPlaceholder(placeholder: "placeholder",
                            offsetY: $offsetY,
                            foregroundColor: $color,
-                           background: .white)
+                           background: .white,
+                           floatingYOffset: GSFloatingLabelMetrics.centeredYOffset(containerHeight: 55))
   }
 }

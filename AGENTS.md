@@ -23,7 +23,7 @@
 - 공개 API는 `Public`, 내부 구현은 `Private`로 구분한다.
 
 ### Dependency Inversion
-- 외부 라이브러리(`LimitLengthTextField`, `swift-testing`)는 `Private`/`Tests`에서만 직접 참조하고,
+- 외부 라이브러리(`LimitLengthTextField`)는 `Private`에서만 직접 참조하고,
   공개 API는 자체 뷰 컴포넌트로만 노출한다.
 
 ## SPM 기준 리뷰 예외/대상
@@ -41,6 +41,8 @@
 - `Package.swift`, `Package.resolved`
 - `Sources/GoogleStyleSwiftUI/Public/Color+.swift`
 - `Sources/GoogleStyleSwiftUI/Public/GSTextField.swift`
+- `Sources/GoogleStyleSwiftUI/Public/GSMultilineTextField.swift`
+- `Sources/GoogleStyleSwiftUI/Public/GSTextView.swift`
 - `Sources/GoogleStyleSwiftUI/Public/GSSecureField.swift`
 
 ## PR/Review Operations

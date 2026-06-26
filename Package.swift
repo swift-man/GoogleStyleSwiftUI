@@ -5,8 +5,8 @@ import PackageDescription
 let package = Package(
     name: "GoogleStyleSwiftUI",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12)
+        .iOS(.v16),
+        .macOS(.v13)
     ],
     products: [
         .library(

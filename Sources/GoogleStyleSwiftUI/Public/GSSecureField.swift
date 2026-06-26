@@ -8,6 +8,9 @@
 import SwiftUI
 
 public struct GSSecureField: View {
+  private enum Layout {
+    static let minimumHeight: CGFloat = 55
+  }
   
   private var isFocused: FocusState<Bool>.Binding
   
@@ -43,11 +46,12 @@ public struct GSSecureField: View {
               background: Color = .background) {
     
     self._text = text
-    self.limit = limit
+    self.limit = GSLimitPolicy.normalizedLimit(limit)
     self._errorMessage = errorMessage
     self.placeholder = placeholder
-    self._color = State(initialValue: text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color)
-    self._offsetY = State(initialValue: text.wrappedValue.isEmpty ? .center : .top)
+    self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
+                                                               isFocused: isFocused.wrappedValue))
+    self._offsetY = State(initialValue: text.wrappedValue.isEmpty && !isFocused.wrappedValue ? .center : .top)
     self.isFocused = isFocused
     self.description = description
     self.background = background
@@ -61,7 +65,8 @@ public struct GSSecureField: View {
         GSPlaceholder(placeholder: placeholder,
                       offsetY: $offsetY,
                       foregroundColor: $color,
-                      background: background)
+                      background: background,
+                      floatingYOffset: GSFloatingLabelMetrics.centeredYOffset(containerHeight: Layout.minimumHeight))
         GSLimitedLengthSecureField(text: $text,
                                    limit: limit)
         .modifier(GSTextFieldModifier(isFocused: isFocused,
@@ -73,7 +78,7 @@ public struct GSSecureField: View {
                              editingPlaceholder: editingPlaceholder,
                              offsetY: $offsetY)
       }
-      .frame(height: 45)
+      .frame(height: Layout.minimumHeight)
       
       if !errorMessage.isEmpty {
         GSErrorMessage(errorMessage: errorMessage)

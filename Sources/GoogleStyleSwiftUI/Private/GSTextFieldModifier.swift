@@ -55,9 +55,9 @@ struct GSTextFieldModifier: ViewModifier {
                            errorMessage: errorMessage)
         }
       })
-      .padding(EdgeInsets(top: 5,
+      .padding(EdgeInsets(top: 10,
                           leading: 15,
-                          bottom: 5,
+                          bottom: 10,
                           trailing: 15))
   }
 
@@ -67,10 +67,6 @@ struct GSTextFieldModifier: ViewModifier {
   }
   
   private func configureColor(errorMessage: String, isFocused: Bool) {
-    if !errorMessage.isEmpty {
-      color = GSColorStyle.error.color
-    } else {
-      color = isFocused ? GSColorStyle.active.color : GSColorStyle.normal.color
-    }
+    color = GSInputColorPolicy.color(errorMessage: errorMessage, isFocused: isFocused)
   }
 }
