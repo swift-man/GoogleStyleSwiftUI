@@ -51,7 +51,8 @@ public struct GSTextField: View {
     self.limit = limit
     self._errorMessage = errorMessage
     self.placeholder = placeholder
-    self._color = State(initialValue: text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color)
+    self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
+                                                               isFocused: isFocused.wrappedValue))
     self._offsetY = State(initialValue: text.wrappedValue.isEmpty ? .center : .top)
     self.isFocused = isFocused
     self.description = description

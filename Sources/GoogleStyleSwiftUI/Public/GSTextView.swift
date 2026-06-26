@@ -67,7 +67,8 @@ public struct GSTextView: View {
     self.background = background
     self.containerBackground = containerBackground
     self.minHeight = max(45, minHeight)
-    self._color = State(initialValue: text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color)
+    self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
+                                                               isFocused: isFocused.wrappedValue))
     self._isPlaceholderFloating = State(initialValue: !text.wrappedValue.isEmpty)
   }
 
@@ -89,7 +90,9 @@ public struct GSTextView: View {
           .allowsHitTesting(false)
 
         placeholderView
+          .allowsHitTesting(false)
         editingPlaceholderView
+          .allowsHitTesting(false)
       }
       .padding(.top, isPlaceholderFloating ? 8 : 0)
       .frame(minHeight: minHeight)
@@ -151,11 +154,7 @@ public struct GSTextView: View {
   }
 
   private func configureColor(errorMessage: String, isFocused: Bool) {
-    if !errorMessage.isEmpty {
-      color = GSColorStyle.error.color
-    } else {
-      color = isFocused ? GSColorStyle.active.color : GSColorStyle.normal.color
-    }
+    color = GSInputColorPolicy.color(errorMessage: errorMessage, isFocused: isFocused)
   }
 
   private func enforceLimit(_ value: String) {

@@ -67,10 +67,6 @@ struct GSTextFieldModifier: ViewModifier {
   }
   
   private func configureColor(errorMessage: String, isFocused: Bool) {
-    if !errorMessage.isEmpty {
-      color = GSColorStyle.error.color
-    } else {
-      color = isFocused ? GSColorStyle.active.color : GSColorStyle.normal.color
-    }
+    color = GSInputColorPolicy.color(errorMessage: errorMessage, isFocused: isFocused)
   }
 }

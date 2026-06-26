@@ -61,7 +61,8 @@ public struct GSMultilineTextField: View {
     self.description = description
     self.background = background
     self.lineLimit = Self.normalizedLineLimit(lineLimit)
-    self._color = State(initialValue: text.wrappedValue.isEmpty ? GSColorStyle.normal.color : GSColorStyle.active.color)
+    self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
+                                                               isFocused: isFocused.wrappedValue))
     self._isPlaceholderFloating = State(initialValue: !text.wrappedValue.isEmpty)
   }
 
@@ -83,7 +84,9 @@ public struct GSMultilineTextField: View {
           .background(background)
 
         placeholderView
+          .allowsHitTesting(false)
         editingPlaceholderView
+          .allowsHitTesting(false)
       }
       .padding(.top, isPlaceholderFloating ? 8 : 0)
       .frame(minHeight: Layout.minimumHeight)
@@ -144,11 +147,7 @@ public struct GSMultilineTextField: View {
   }
 
   private func configureColor(errorMessage: String, isFocused: Bool) {
-    if !errorMessage.isEmpty {
-      color = GSColorStyle.error.color
-    } else {
-      color = isFocused ? GSColorStyle.active.color : GSColorStyle.normal.color
-    }
+    color = GSInputColorPolicy.color(errorMessage: errorMessage, isFocused: isFocused)
   }
 
   private func enforceLimit(_ value: String) {
