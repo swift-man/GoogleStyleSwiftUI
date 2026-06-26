@@ -96,6 +96,10 @@ public struct GSTextView: View {
       }
       .padding(.top, isPlaceholderFloating ? 8 : 0)
       .frame(minHeight: minHeight)
+      .onAppear {
+        enforceLimit(text)
+        synchronizeState(isFocused: isFocused.wrappedValue, errorMessage: errorMessage)
+      }
       .onChange(of: isFocused.wrappedValue, perform: { newValue in
         withAnimation(.easeInOut(duration: 0.15)) {
           synchronizeState(isFocused: newValue, errorMessage: errorMessage)
