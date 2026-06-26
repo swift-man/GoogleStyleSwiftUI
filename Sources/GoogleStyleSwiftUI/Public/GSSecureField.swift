@@ -51,7 +51,7 @@ public struct GSSecureField: View {
     self.placeholder = placeholder
     self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
                                                                isFocused: isFocused.wrappedValue))
-    self._offsetY = State(initialValue: text.wrappedValue.isEmpty ? .center : .top)
+    self._offsetY = State(initialValue: text.wrappedValue.isEmpty && !isFocused.wrappedValue ? .center : .top)
     self.isFocused = isFocused
     self.description = description
     self.background = background

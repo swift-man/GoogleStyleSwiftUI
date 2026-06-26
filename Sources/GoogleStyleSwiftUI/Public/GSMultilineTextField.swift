@@ -63,7 +63,7 @@ public struct GSMultilineTextField: View {
     self.lineLimit = Self.normalizedLineLimit(lineLimit)
     self._color = State(initialValue: GSInputColorPolicy.color(errorMessage: errorMessage.wrappedValue,
                                                                isFocused: isFocused.wrappedValue))
-    self._isPlaceholderFloating = State(initialValue: !text.wrappedValue.isEmpty)
+    self._isPlaceholderFloating = State(initialValue: !text.wrappedValue.isEmpty || isFocused.wrappedValue)
   }
 
   public var body: some View {

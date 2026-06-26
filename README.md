@@ -5,7 +5,7 @@
 ![Badge](https://img.shields.io/badge/SwiftUI-001b87.svg?style=flat-square&logo=Swift&logoColor=black)
 ![Badge - Version](https://img.shields.io/badge/Version-1.0.0-1177AA?style=flat-square)
 ![Badge - Swift Package Manager](https://img.shields.io/badge/SPM-Supported-orange?style=flat-square)
-![Badge - Platform](https://img.shields.io/badge/platform-macOS_12.0|iOS_16.0-yellow?style=flat-square)
+![Badge - Platform](https://img.shields.io/badge/platform-macOS_13.0|iOS_16.0-yellow?style=flat-square)
 ![Badge - License](https://img.shields.io/badge/license-MIT-black?style=flat-square)
 
 ## Feature
@@ -26,7 +26,7 @@
 
 ## Requirements
 * iOS 16.0+
-* macOS 12.0+
+* macOS 13.0+
 * Swift 5.9+
 
 ## Installation
@@ -67,7 +67,7 @@ struct ContentView: View {
 ```
 
 ## Multiline TextField
-`GSMultilineTextField`는 iOS 16 이상에서 세로 확장 입력을 지원합니다.
+`GSMultilineTextField`는 iOS 16 이상, macOS 13 이상에서 세로 확장 입력을 지원합니다.
 
 ```swift
 import SwiftUI
