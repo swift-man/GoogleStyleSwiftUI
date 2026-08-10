@@ -83,7 +83,7 @@ public struct GSTextView: View {
                               bottom: Layout.textBottomPadding,
                               trailing: Layout.horizontalTextPadding))
           .frame(minHeight: minHeight)
-          .gsTextEditorBackground(background)
+          .scrollContentBackground(.hidden)
           .modifier(GSInputStateModifier(isFocused: isFocused,
                                          text: $text,
                                          errorMessage: $errorMessage,
@@ -139,16 +139,3 @@ public struct GSTextView: View {
 }
 
 public typealias GSTextEditor = GSTextView
-
-private extension View {
-  @ViewBuilder
-  func gsTextEditorBackground(_ background: Color) -> some View {
-    if #available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *) {
-      self
-        .scrollContentBackground(.hidden)
-        .background(background)
-    } else {
-      self.background(background)
-    }
-  }
-}
