@@ -3,7 +3,7 @@
 
 ![Badge](https://img.shields.io/badge/swift-white.svg?style=flat-square&logo=Swift)
 ![Badge](https://img.shields.io/badge/SwiftUI-001b87.svg?style=flat-square&logo=Swift&logoColor=black)
-![Badge - Version](https://img.shields.io/badge/Version-1.0.1-1177AA?style=flat-square)
+![Badge - Version](https://img.shields.io/badge/Version-1.0.2-1177AA?style=flat-square)
 ![Badge - Swift Package Manager](https://img.shields.io/badge/SPM-Supported-orange?style=flat-square)
 ![Badge - Platform](https://img.shields.io/badge/platform-macOS_13.0|iOS_16.0-yellow?style=flat-square)
 ![Badge - License](https://img.shields.io/badge/license-MIT-black?style=flat-square)
@@ -35,7 +35,7 @@
 ## Installation
 ```swift
 dependencies: [
-  .package(url: "https://github.com/swift-man/GoogleStyleSwiftUI.git", from: "1.0.1")
+  .package(url: "https://github.com/swift-man/GoogleStyleSwiftUI.git", from: "1.0.2")
 ]
 ```
 
