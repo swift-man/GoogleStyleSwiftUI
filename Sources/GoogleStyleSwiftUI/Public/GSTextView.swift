@@ -84,7 +84,6 @@ public struct GSTextView: View {
                               trailing: Layout.horizontalTextPadding))
           .frame(minHeight: minHeight)
           .scrollContentBackground(.hidden)
-          .background(background)
           .modifier(GSInputStateModifier(isFocused: isFocused,
                                          text: $text,
                                          errorMessage: $errorMessage,
