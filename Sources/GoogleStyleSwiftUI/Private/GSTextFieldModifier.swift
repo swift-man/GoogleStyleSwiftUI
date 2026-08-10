@@ -37,6 +37,7 @@ struct GSTextFieldModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
       .focused(isFocused)
+      .textFieldStyle(.plain)
       .onChange(of: isFocused.wrappedValue, perform: { newValue in
         withAnimation(.easeInOut(duration: 0.15)) {
           synchronizeState(isFocused: newValue,
