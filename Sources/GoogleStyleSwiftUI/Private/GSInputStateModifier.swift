@@ -35,48 +35,55 @@ struct GSInputStateModifier: ViewModifier {
     content
       .focused(isFocused)
       .onAppear {
-        enforceLimit(text)
+        let currentText = enforceLimit(text)
         synchronizeState(isFocused: isFocused.wrappedValue,
-                         errorMessage: errorMessage)
+                         errorMessage: errorMessage,
+                         text: currentText)
       }
       .onChange(of: isFocused.wrappedValue, perform: { newValue in
         withAnimation(.easeInOut(duration: 0.15)) {
           synchronizeState(isFocused: newValue,
-                           errorMessage: errorMessage)
+                           errorMessage: errorMessage,
+                           text: text)
         }
       })
       .onChange(of: errorMessage, perform: { newValue in
         withAnimation(.easeInOut(duration: 0.15)) {
           synchronizeState(isFocused: isFocused.wrappedValue,
-                           errorMessage: newValue)
+                           errorMessage: newValue,
+                           text: text)
         }
       })
       .onChange(of: text, perform: { newValue in
-        enforceLimit(newValue)
+        let currentText = enforceLimit(newValue)
 
         withAnimation(.easeInOut(duration: 0.15)) {
           synchronizeState(isFocused: isFocused.wrappedValue,
-                           errorMessage: errorMessage)
+                           errorMessage: errorMessage,
+                           text: currentText)
         }
       })
   }
 
-  private func synchronizeState(isFocused: Bool, errorMessage: String) {
+  private func synchronizeState(isFocused: Bool,
+                                errorMessage: String,
+                                text: String) {
     isPlaceholderFloating = isFocused || !text.isEmpty
     color = GSInputColorPolicy.color(errorMessage: errorMessage,
                                      isFocused: isFocused)
   }
 
-  private func enforceLimit(_ value: String) {
+  private func enforceLimit(_ value: String) -> String {
     guard let characterLimit else {
-      return
+      return value
     }
 
     let limitedText = GSLimitPolicy.limitedText(value, limit: characterLimit)
     guard limitedText != value else {
-      return
+      return value
     }
 
     text = limitedText
+    return limitedText
   }
 }

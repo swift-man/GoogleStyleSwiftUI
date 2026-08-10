@@ -6,6 +6,11 @@ enum GSLimitPolicy {
   }
 
   static func limitedText(_ text: String, limit: Int) -> String {
-    String(text.prefix(normalizedLimit(limit)))
+    let normalizedLimit = normalizedLimit(limit)
+    guard text.count > normalizedLimit else {
+      return text
+    }
+
+    return String(text.prefix(normalizedLimit))
   }
 }
