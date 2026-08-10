@@ -16,4 +16,24 @@ struct GoogleStyleUITests {
     #expect(GSLimitPolicy.limitedText("SwiftUI", limit: 10) == "SwiftUI")
     #expect(GSLimitPolicy.limitedText("SwiftUI", limit: 0) == "S")
   }
+
+  @Test
+  func testInputColorPolicyUsesNormalColorWhenIdle() {
+    #expect(GSInputColorPolicy.color(errorMessage: "",
+                                     isFocused: false) == GSColorStyle.normal.color)
+  }
+
+  @Test
+  func testInputColorPolicyUsesActiveColorWhenFocused() {
+    #expect(GSInputColorPolicy.color(errorMessage: "",
+                                     isFocused: true) == GSColorStyle.active.color)
+  }
+
+  @Test
+  func testInputColorPolicyPrioritizesErrorColor() {
+    #expect(GSInputColorPolicy.color(errorMessage: "Required",
+                                     isFocused: false) == GSColorStyle.error.color)
+    #expect(GSInputColorPolicy.color(errorMessage: "Required",
+                                     isFocused: true) == GSColorStyle.error.color)
+  }
 }
