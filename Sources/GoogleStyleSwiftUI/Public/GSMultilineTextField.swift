@@ -75,8 +75,13 @@ public struct GSMultilineTextField: View {
 
         TextField("", text: $text, axis: .vertical)
           .lineLimit(lineLimit)
-          .focused(isFocused)
           .textFieldStyle(.plain)
+          .modifier(GSInputStateModifier(isFocused: isFocused,
+                                         text: $text,
+                                         errorMessage: $errorMessage,
+                                         color: $color,
+                                         isPlaceholderFloating: $isPlaceholderFloating,
+                                         characterLimit: limit))
           .padding(EdgeInsets(top: isPlaceholderFloating ? Layout.floatingTextTopPadding : Layout.collapsedTextTopPadding,
                               leading: Layout.horizontalTextPadding,
                               bottom: Layout.textBottomPadding,
@@ -90,27 +95,6 @@ public struct GSMultilineTextField: View {
       }
       .padding(.top, isPlaceholderFloating ? 8 : 0)
       .frame(minHeight: Layout.minimumHeight)
-      .onAppear {
-        enforceLimit(text)
-        synchronizeState(isFocused: isFocused.wrappedValue, errorMessage: errorMessage)
-      }
-      .onChange(of: isFocused.wrappedValue, perform: { newValue in
-        withAnimation(.easeInOut(duration: 0.15)) {
-          synchronizeState(isFocused: newValue, errorMessage: errorMessage)
-        }
-      })
-      .onChange(of: errorMessage, perform: { newValue in
-        withAnimation(.easeInOut(duration: 0.15)) {
-          synchronizeState(isFocused: isFocused.wrappedValue, errorMessage: newValue)
-        }
-      })
-      .onChange(of: text, perform: { newValue in
-        enforceLimit(newValue)
-
-        withAnimation(.easeInOut(duration: 0.15)) {
-          synchronizeState(isFocused: isFocused.wrappedValue, errorMessage: errorMessage)
-        }
-      })
 
       if !errorMessage.isEmpty {
         GSErrorMessage(errorMessage: errorMessage)
@@ -143,23 +127,6 @@ public struct GSMultilineTextField: View {
         .offset(x: Layout.editingPlaceholderXOffset,
                 y: Layout.editingPlaceholderYOffset)
     }
-  }
-
-  private func synchronizeState(isFocused: Bool, errorMessage: String) {
-    isPlaceholderFloating = isFocused || !text.isEmpty
-    configureColor(errorMessage: errorMessage, isFocused: isFocused)
-  }
-
-  private func configureColor(errorMessage: String, isFocused: Bool) {
-    color = GSInputColorPolicy.color(errorMessage: errorMessage, isFocused: isFocused)
-  }
-
-  private func enforceLimit(_ value: String) {
-    guard value.count > limit else {
-      return
-    }
-
-    text = String(value.prefix(limit))
   }
 
   private static func normalizedLineLimit(_ lineLimit: ClosedRange<Int>) -> ClosedRange<Int> {

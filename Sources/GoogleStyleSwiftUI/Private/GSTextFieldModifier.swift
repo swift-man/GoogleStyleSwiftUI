@@ -36,38 +36,23 @@ struct GSTextFieldModifier: ViewModifier {
   
   func body(content: Content) -> some View {
     content
-      .focused(isFocused)
+      .modifier(GSInputStateModifier(isFocused: isFocused,
+                                     text: $text,
+                                     errorMessage: $errorMessage,
+                                     color: $color,
+                                     isPlaceholderFloating: isPlaceholderFloating))
       .textFieldStyle(.plain)
-      .onChange(of: isFocused.wrappedValue, perform: { newValue in
-        withAnimation(.easeInOut(duration: 0.15)) {
-          synchronizeState(isFocused: newValue,
-                           errorMessage: errorMessage)
-        }
-      })
-      .onChange(of: errorMessage, perform: { newValue in
-        withAnimation(.easeInOut(duration: 0.15)) {
-          synchronizeState(isFocused: isFocused.wrappedValue,
-                           errorMessage: newValue)
-        }
-      })
-      .onChange(of: text, perform: { _ in
-        withAnimation(.easeInOut(duration: 0.15)) {
-          synchronizeState(isFocused: isFocused.wrappedValue,
-                           errorMessage: errorMessage)
-        }
-      })
       .padding(EdgeInsets(top: 10,
                           leading: 15,
                           bottom: 10,
                           trailing: 15))
   }
 
-  private func synchronizeState(isFocused: Bool, errorMessage: String) {
-    offsetY = isFocused || !text.isEmpty ? .top : .center
-    configureColor(errorMessage: errorMessage, isFocused: isFocused)
-  }
-  
-  private func configureColor(errorMessage: String, isFocused: Bool) {
-    color = GSInputColorPolicy.color(errorMessage: errorMessage, isFocused: isFocused)
+  private var isPlaceholderFloating: Binding<Bool> {
+    Binding(get: {
+      offsetY == .top
+    }, set: { isFloating in
+      offsetY = isFloating ? .top : .center
+    })
   }
 }

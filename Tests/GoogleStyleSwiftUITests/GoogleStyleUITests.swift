@@ -9,4 +9,11 @@ struct GoogleStyleUITests {
     #expect(GSLimitPolicy.normalizedLimit(0) == 1)
     #expect(GSLimitPolicy.normalizedLimit(-1) == 1)
   }
+
+  @Test
+  func testLimitPolicyTruncatesTextUsingNormalizedLimit() {
+    #expect(GSLimitPolicy.limitedText("SwiftUI", limit: 5) == "Swift")
+    #expect(GSLimitPolicy.limitedText("SwiftUI", limit: 10) == "SwiftUI")
+    #expect(GSLimitPolicy.limitedText("SwiftUI", limit: 0) == "S")
+  }
 }

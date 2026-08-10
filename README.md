@@ -27,7 +27,7 @@
 ## Requirements
 * iOS 16.0+
 * macOS 13.0+
-* Swift 5.9+
+* Swift 6.0+
 
 ## Documentation
 * [DocC Documentation](https://swift-man.github.io/docs/GoogleStyleSwiftUI/documentation/googlestyleswiftui/)
