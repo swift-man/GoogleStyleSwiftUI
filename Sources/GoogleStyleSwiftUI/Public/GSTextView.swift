@@ -8,6 +8,8 @@ import SwiftUI
 public struct GSTextView: View {
 
   private enum Layout {
+    static let editorVerticalInset: CGFloat = 8
+    static let accessibilityContainerPadding: CGFloat = 4
     static let horizontalTextPadding: CGFloat = 11
     static let floatingTextTopPadding: CGFloat = 15
     static let collapsedTextTopPadding: CGFloat = 10
@@ -21,8 +23,6 @@ public struct GSTextView: View {
   }
 
   @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-
-  @ScaledMetric(relativeTo: .body) private var bodyLineHeight: CGFloat = 21
 
   private var isFocused: FocusState<Bool>.Binding
 
@@ -94,19 +94,28 @@ public struct GSTextView: View {
       }
     }
     .modifier(GSInputContainerModifier(background: containerBackground,
-                                      verticalPadding: dynamicTypeSize.isAccessibilitySize ? 4 : 16))
+                                      verticalPadding: dynamicTypeSize.isAccessibilitySize ? Layout.accessibilityContainerPadding : 16))
   }
 
   private var editor: some View {
     ZStack(alignment: .topLeading) {
       background
 
+      if dynamicTypeSize.isAccessibilitySize {
+        // Reserve one line in the same inherited font as the editor.
+        Text(verbatim: "Ag")
+          .fixedSize()
+          .padding(.vertical, Layout.editorVerticalInset)
+          .hidden()
+          .accessibilityHidden(true)
+      }
+
       TextEditor(text: $text)
         .padding(EdgeInsets(top: textTopPadding,
                             leading: Layout.horizontalTextPadding,
                             bottom: dynamicTypeSize.isAccessibilitySize ? 0 : Layout.textBottomPadding,
                             trailing: Layout.horizontalTextPadding))
-        .frame(minHeight: dynamicTypeSize.isAccessibilitySize ? max(minHeight, bodyLineHeight + 16) : minHeight)
+        .frame(minHeight: minHeight)
         .scrollContentBackground(.hidden)
         .modifier(GSInputStateModifier(isFocused: isFocused,
                                        text: $text,
@@ -158,8 +167,9 @@ public struct GSTextView: View {
         .font(.body)
         .foregroundColor(GSColorStyle.normal.color)
         .background(background)
-        .offset(x: Layout.editingPlaceholderXOffset,
-                y: dynamicTypeSize.isAccessibilitySize ? 8 : Layout.editingPlaceholderYOffset)
+        .padding(.leading, Layout.editingPlaceholderXOffset)
+        .padding(.trailing, Layout.horizontalTextPadding)
+        .offset(y: dynamicTypeSize.isAccessibilitySize ? Layout.editorVerticalInset : Layout.editingPlaceholderYOffset)
     }
   }
 

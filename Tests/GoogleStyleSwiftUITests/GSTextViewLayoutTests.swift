@@ -7,9 +7,16 @@ import XCTest
 @MainActor
 final class GSTextViewLayoutTests: XCTestCase {
   func testCompactEditorHasRoomForOneLineAtMaximumDynamicType() throws {
-    let host = UIHostingController(rootView: CompactEditor()
-      .environment(\.dynamicTypeSize, .accessibility5))
-    let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 350, height: 160))
+    try assertLineFits(CompactEditor().frame(width: 320, height: 143))
+  }
+
+  func testIntrinsicHeightFitsInheritedLargeTitle() throws {
+    try assertLineFits(CompactEditor().font(.largeTitle).fixedSize(horizontal: false, vertical: true))
+  }
+
+  private func assertLineFits(_ content: some View) throws {
+    let host = UIHostingController(rootView: content.environment(\.dynamicTypeSize, .accessibility5))
+    let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 350, height: 350))
     window.rootViewController = host
     window.isHidden = false
     defer { window.isHidden = true }
@@ -34,7 +41,6 @@ private struct CompactEditor: View {
     GSTextView(text: .constant("Hello"), placeholder: "자주 쓰는 텍스트 입력",
                isFocused: $focused, errorMessage: .constant(""),
                containerBackground: .white, minHeight: 45)
-      .frame(width: 320, height: 143)
   }
 }
 #endif
