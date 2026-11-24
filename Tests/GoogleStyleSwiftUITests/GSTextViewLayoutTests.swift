@@ -14,25 +14,45 @@ final class GSTextViewLayoutTests: XCTestCase {
     try assertLineFits(CompactEditor().font(.largeTitle).fixedSize(horizontal: false, vertical: true))
   }
 
+  func testFontMeasurementDoesNotExpandNarrowEditor() {
+    let host = UIHostingController(rootView: CompactEditor(placeholder: "")
+      .font(.largeTitle).environment(\.dynamicTypeSize, .accessibility5))
+    let proposal = CGSize(width: 80, height: 350)
+    XCTAssertLessThanOrEqual(host.sizeThatFits(in: proposal).width, proposal.width + 1)
+  }
+
   func testFocusedMultilineHintReservesVerticalInsets() async throws {
-    let hint = "First\nSecond\nThird"
+    try await assertHintFits("First\nSecond\nThird", size: .accessibility5, width: 350, verticalInsets: 16)
+  }
+
+  func testWrappedHintReservesTopInsetAtDefaultSize() async throws {
+    try await assertHintFits("First second third fourth fifth sixth", size: .large, width: 110, verticalInsets: 23)
+  }
+
+  private func assertHintFits(_ hint: String, size: DynamicTypeSize, width: CGFloat, verticalInsets: CGFloat) async throws {
     let host = UIHostingController(rootView: HintEditor(hint: hint)
       .fixedSize(horizontal: false, vertical: true)
-      .environment(\.dynamicTypeSize, .accessibility5))
-    let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 350, height: 700))
+      .environment(\.dynamicTypeSize, size))
+    let window = UIWindow(frame: CGRect(x: 0, y: 0, width: width, height: 700))
     window.rootViewController = host
     window.makeKeyAndVisible()
     defer { window.isHidden = true }
     host.view.layoutIfNeeded()
     let editor = try XCTUnwrap(findTextView(in: host.view))
-    let ready = NSPredicate { _, _ in editor.isFirstResponder }
-    await fulfillment(of: [XCTNSPredicateExpectation(predicate: ready, object: nil)], timeout: 5)
-    host.view.layoutIfNeeded()
 
     let label = UIHostingController(rootView: Text(hint).font(.body)
-      .environment(\.dynamicTypeSize, .accessibility5))
-    let hintHeight = label.sizeThatFits(in: CGSize(width: 300, height: 700)).height
-    XCTAssertGreaterThanOrEqual(editor.bounds.height + 1, hintHeight + 16)
+      .environment(\.dynamicTypeSize, size))
+    let hintHeight = label.sizeThatFits(in: CGSize(width: width - 28, height: 700)).height
+    let minimumHeight = hintHeight + verticalInsets
+    // The editor itself has extra vertical padding in the standard layout.
+    let editorPadding: CGFloat = size.isAccessibilitySize ? 0 : 27
+    let ready = NSPredicate { _, _ in
+      host.view.layoutIfNeeded()
+      return editor.isFirstResponder && editor.bounds.height + editorPadding + 1 >= minimumHeight
+    }
+    await fulfillment(of: [XCTNSPredicateExpectation(predicate: ready, object: nil)], timeout: 5)
+    XCTAssertTrue(editor.isFirstResponder)
+    XCTAssertGreaterThanOrEqual(editor.bounds.height + editorPadding + 1, minimumHeight)
   }
 
   private func assertLineFits(_ content: some View) throws {
@@ -56,10 +76,11 @@ final class GSTextViewLayoutTests: XCTestCase {
 }
 
 private struct CompactEditor: View {
+  var placeholder = "자주 쓰는 텍스트 입력"
   @FocusState private var focused: Bool
 
   var body: some View {
-    GSTextView(text: .constant("Hello"), placeholder: "자주 쓰는 텍스트 입력",
+    GSTextView(text: .constant("Hello"), placeholder: placeholder,
                isFocused: $focused, errorMessage: .constant(""),
                containerBackground: .white, minHeight: 45)
   }

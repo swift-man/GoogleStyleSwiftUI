@@ -170,8 +170,8 @@ public struct GSTextView: View {
         .background(background)
         .padding(.leading, Layout.editingPlaceholderXOffset)
         .padding(.trailing, Layout.horizontalTextPadding)
-        .padding(.vertical, dynamicTypeSize.isAccessibilitySize ? Layout.editorVerticalInset : 0)
-        .offset(y: dynamicTypeSize.isAccessibilitySize ? 0 : Layout.editingPlaceholderYOffset)
+        .padding(.top, dynamicTypeSize.isAccessibilitySize ? Layout.editorVerticalInset : Layout.editingPlaceholderYOffset)
+        .padding(.bottom, dynamicTypeSize.isAccessibilitySize ? Layout.editorVerticalInset : 0)
     }
   }
 
