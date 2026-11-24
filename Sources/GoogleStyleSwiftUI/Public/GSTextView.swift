@@ -94,7 +94,7 @@ public struct GSTextView: View {
       }
     }
     .modifier(GSInputContainerModifier(background: containerBackground,
-                                      verticalPadding: dynamicTypeSize.isAccessibilitySize ? Layout.accessibilityContainerPadding : 16))
+                                      verticalPadding: dynamicTypeSize.isAccessibilitySize ? Layout.accessibilityContainerPadding : GSInputContainerModifier.defaultVerticalPadding))
   }
 
   private var editor: some View {
@@ -105,6 +105,7 @@ public struct GSTextView: View {
         // Reserve one line in the same inherited font as the editor.
         Text(verbatim: "Ag")
           .fixedSize()
+          .frame(width: 0)
           .padding(.vertical, Layout.editorVerticalInset)
           .hidden()
           .accessibilityHidden(true)
@@ -169,7 +170,8 @@ public struct GSTextView: View {
         .background(background)
         .padding(.leading, Layout.editingPlaceholderXOffset)
         .padding(.trailing, Layout.horizontalTextPadding)
-        .offset(y: dynamicTypeSize.isAccessibilitySize ? Layout.editorVerticalInset : Layout.editingPlaceholderYOffset)
+        .padding(.vertical, dynamicTypeSize.isAccessibilitySize ? Layout.editorVerticalInset : 0)
+        .offset(y: dynamicTypeSize.isAccessibilitySize ? 0 : Layout.editingPlaceholderYOffset)
     }
   }
 

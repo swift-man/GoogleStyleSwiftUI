@@ -5,8 +5,10 @@ struct GSInputContainerModifier: ViewModifier {
     static let cornerRadius: CGFloat = 12
   }
 
+  static let defaultVerticalPadding: CGFloat = 16
+
   let background: Color?
-  var verticalPadding: CGFloat = 16
+  var verticalPadding: CGFloat = defaultVerticalPadding
 
   @ViewBuilder
   func body(content: Content) -> some View {
