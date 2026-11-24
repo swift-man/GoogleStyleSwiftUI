@@ -20,6 +20,10 @@ public struct GSTextView: View {
     static let editingPlaceholderYOffset: CGFloat = 23
   }
 
+  @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+
+  @ScaledMetric(relativeTo: .body) private var bodyLineHeight: CGFloat = 21
+
   private var isFocused: FocusState<Bool>.Binding
 
   @Binding
@@ -74,33 +78,14 @@ public struct GSTextView: View {
 
   public var body: some View {
     VStack(alignment: .leading, spacing: 0) {
-      ZStack(alignment: .topLeading) {
-        background
-
-        TextEditor(text: $text)
-          .padding(EdgeInsets(top: isPlaceholderFloating ? Layout.floatingTextTopPadding : Layout.collapsedTextTopPadding,
-                              leading: Layout.horizontalTextPadding,
-                              bottom: Layout.textBottomPadding,
-                              trailing: Layout.horizontalTextPadding))
-          .frame(minHeight: minHeight)
-          .scrollContentBackground(.hidden)
-          .modifier(GSInputStateModifier(isFocused: isFocused,
-                                         text: $text,
-                                         errorMessage: $errorMessage,
-                                         color: $color,
-                                         isPlaceholderFloating: $isPlaceholderFloating,
-                                         characterLimit: limit))
-
-        GSRoundedBorder(color: $color)
-          .allowsHitTesting(false)
-
-        placeholderView
-          .allowsHitTesting(false)
-        editingPlaceholderView
-          .allowsHitTesting(false)
+      if dynamicTypeSize.isAccessibilitySize {
+        Text(placeholder)
+          .font(.caption)
+          .foregroundStyle(isPlaceholderFloating ? color : GSColorStyle.normal.color)
+          .accessibilityHidden(true)
       }
-      .padding(.top, isPlaceholderFloating ? 8 : 0)
-      .frame(minHeight: minHeight)
+
+      editor
 
       if !errorMessage.isEmpty {
         GSErrorMessage(errorMessage: errorMessage)
@@ -108,7 +93,49 @@ public struct GSTextView: View {
         GSText(description: description)
       }
     }
-    .modifier(GSInputContainerModifier(background: containerBackground))
+    .modifier(GSInputContainerModifier(background: containerBackground,
+                                      verticalPadding: dynamicTypeSize.isAccessibilitySize ? 4 : 16))
+  }
+
+  private var editor: some View {
+    ZStack(alignment: .topLeading) {
+      background
+
+      TextEditor(text: $text)
+        .padding(EdgeInsets(top: textTopPadding,
+                            leading: Layout.horizontalTextPadding,
+                            bottom: dynamicTypeSize.isAccessibilitySize ? 0 : Layout.textBottomPadding,
+                            trailing: Layout.horizontalTextPadding))
+        .frame(minHeight: dynamicTypeSize.isAccessibilitySize ? max(minHeight, bodyLineHeight + 16) : minHeight)
+        .scrollContentBackground(.hidden)
+        .modifier(GSInputStateModifier(isFocused: isFocused,
+                                       text: $text,
+                                       errorMessage: $errorMessage,
+                                       color: $color,
+                                       isPlaceholderFloating: $isPlaceholderFloating,
+                                       characterLimit: limit))
+        .accessibilityLabel(Text(placeholder))
+        .accessibilityHint(Text(editingPlaceholder))
+
+      GSRoundedBorder(color: $color)
+        .allowsHitTesting(false)
+
+      if !dynamicTypeSize.isAccessibilitySize {
+        placeholderView
+          .allowsHitTesting(false)
+          .accessibilityHidden(true)
+      }
+      editingPlaceholderView
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+    }
+    .padding(.top, isPlaceholderFloating && !dynamicTypeSize.isAccessibilitySize ? 8 : 0)
+    .frame(minHeight: minHeight)
+  }
+
+  private var textTopPadding: CGFloat {
+    if dynamicTypeSize.isAccessibilitySize { return 0 }
+    return isPlaceholderFloating ? Layout.floatingTextTopPadding : Layout.collapsedTextTopPadding
   }
 
   private var placeholderView: some View {
@@ -132,7 +159,7 @@ public struct GSTextView: View {
         .foregroundColor(GSColorStyle.normal.color)
         .background(background)
         .offset(x: Layout.editingPlaceholderXOffset,
-                y: Layout.editingPlaceholderYOffset)
+                y: dynamicTypeSize.isAccessibilitySize ? 8 : Layout.editingPlaceholderYOffset)
     }
   }
 
